@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Project Detail</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="min-h-screen flex flex-col items-center p-4 bg-gray-900">
+
+  <main class="max-w-4xl w-full bg-white rounded-xl shadow-lg p-6 md:p-10 mt-8 mb-8">
+    <h1 class="text-2xl font-bold mb-6 text-center text-gray-900">Online Store Web Application System For Grocery Shops</h1>
+
+    <img 
+      src="images/projWeb2.png" 
+      alt="ภาพตัวอย่างหน้าเว็บแอปฯร้านขายของชำ" 
+      class="w-full max-w-md mx-auto rounded-lg shadow-md mb-6"
+      loading="lazy"
+    />
+    <img 
+      src="images/projWeb1.png" 
+      alt="ภาพตัวอย่างหน้าเว็บแอปฯร้านขายของชำ" 
+      class="w-full max-w-md mx-auto rounded-lg shadow-md mb-6"
+      loading="lazy"
+    />
+
+    <section class="mb-6 text-gray-800 leading-relaxed">
+      <h2 class="text-xl font-semibold mb-3">Project Description</h2>
+      <p class="mt-3">
+          โปรเจกต์นี้พัฒนาในรูปแบบ Full-stack Web Application โดยใช้ React HTML CSS สำหรับส่วน Frontend และ Node.js ร่วมกับ Express.js สำหรับส่วน Backend ส่วนฐานข้อมูลใช้ Firebase Firestore ซึ่งเป็น NoSQL Database แบบ Real-time สำหรับจัดเก็บและจัดการข้อมูลสินค้า ผู้ใช้ และคำสั่งซื้อทั้งหมด นอกจากนี้ยังมีการใช้ Docker สำหรับทำ Containerization เพื่อช่วยให้การ Deploy ระบบทำได้ง่ายขึ้น และรองรับการขยายระบบ (Scalability) ได้อย่างมีประสิทธิภาพ
+      </p>
+    </section>
+
+    <section class="mb-6">
+      <h2 class="text-xl font-semibold mb-3">Features</h2>
+      <ul class="list-disc list-inside text-gray-700 space-y-1">
+        <li>ระบบสมัครสมาชิก เข้าสู่ระบบ และจัดการโปรไฟล์ผู้ใช้งาน</li>
+        <li>การเลือกดูสินค้าแยกตามหมวดหมู่ เช่น อาหาร เครื่องดื่ม ของใช้ในบ้าน และยา</li>
+        <li>ระบบตะกร้าสินค้าและการจัดการคำสั่งซื้อ พร้อมการคำนวณราคาและส่วนลด</li>
+        <li>ระบบจัดการคลังสินค้าแบบเรียลไทม์ พร้อมการติดตามจำนวนสต็อก</li>
+        <li>ระบบแจ้งเตือนสำหรับทั้งผู้ใช้งานและผู้ดูแลร้าน</li>
+        <li>ระบบถูกจัดการและ Deploy ด้วย Docker เพื่อให้การติดตั้งและใช้งานมีความสะดวกและสม่ำเสมอในทุกสภาพแวดล้อม</li>
+      </ul>
+    </section>
+
+    <section class="mb-6">
+     <h2 class="text-xl font-semibold mb-3 flex justify-center items-center gap-2">
+     <span>⚙️</span>
+     Technology Stack
+     </h2>
+     <div class="flex justify-center flex-wrap gap-4 text-blue-700">
+          <div class="flex items-center gap-1 border border-blue-300 rounded-full px-3 py-1 shadow-sm">
+               <span class="text-green-500">
+                    <img src="https://img.icons8.com/?size=100&id=NfbyHexzVEDk&format=png&color=000000" alt="React">
+               </span>
+          </div>
+          <div class="flex items-center gap-1 border border-blue-300 rounded-full px-3 py-1 shadow-sm">
+               <span class="text-green-500">
+                    <img src="https://img.icons8.com/?size=100&id=20909&format=png&color=000000" alt="HTML">
+               </span>
+          </div>
+          <div class="flex items-center gap-1 border border-blue-300 rounded-full px-3 py-1 shadow-sm">
+               <span class="text-green-500">
+                    <img src="https://img.icons8.com/?size=100&id=21278&format=png&color=000000" alt="CSS">
+               </span>
+          </div>
+          <div class="flex items-center gap-1 border border-blue-300 rounded-full px-3 py-1 shadow-sm">
+               <span class="text-green-500">
+                    <img src="https://img.icons8.com/?size=100&id=54087&format=png&color=000000" alt="Node.js">
+               </span>
+          </div>
+          <div class="flex items-center gap-1 border border-blue-300 rounded-full px-3 py-1 shadow-sm">
+               <span class="text-green-500">
+                    <img src="https://img.icons8.com/?size=100&id=87330&format=png&color=000000" alt="firebase">
+               </span>
+          </div>
+          <div class="flex items-center gap-1 border border-blue-300 rounded-full px-3 py-1 shadow-sm">
+               <span class="text-green-500">
+                    <img src="https://img.icons8.com/?size=100&id=cdYUlRaag9G9&format=png&color=000000" alt="Docker">
+               </span>
+          </div>
+     </div>
+     </section>
+
+    <div class="text-center">
+      <a href="https://missisa.github.io/about-supannika/" target="_blank" rel="noopener noreferrer" 
+         class="inline-block bg-blue-600 text-white font-semibold px-8 py-3 rounded-full shadow hover:bg-blue-700 transition">
+        กลับไปหน้าหลัก
+      </a>
+    </div>
+
+  </main>
+
+  <footer class="text-center text-gray-500 mb-4">
+    © 2025 Supannika. All rights reserved.
+  </footer>
+
+</body>
+</html>

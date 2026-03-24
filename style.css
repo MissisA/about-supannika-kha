@@ -1,0 +1,38 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  @apply font-sans m-0 p-0 bg-[#1e202c] text-white;
+}
+
+/* nav */
+nav {
+  @apply text-white;
+}
+
+/* header */
+header {
+  padding: 6rem 2rem;
+  @apply bg-[#0a1e54];
+}
+
+/* contact */
+.contact {
+  @apply bg-[#b2c1eb] text-white text-right px-4 py-2 rounded;
+}
+
+/* project */
+.project {
+  @apply p-12 max-w-xl mx-auto;
+}
+
+/* project-card */
+.project-card {
+  @apply bg-[#bfc0d1] p-4 ml-auto mr-4 text-gray-800 rounded-lg;
+}
+
+/* footer */
+footer {
+  @apply text-white text-center p-4;
+}

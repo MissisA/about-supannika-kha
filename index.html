@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Portfolio-Supannika</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-900 text-white">
+
+  <nav class="fixed top-0 w-full text-white p-4 z-50 bg-[#1e202c]/70">
+    <div class="max-w-6xl mx-auto flex items-center justify-between">
+      <h1 class="text-xl font-bold">Portfolio</h1>
+
+      <button id="menu-toggle" class="md:hidden focus:outline-none">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+            d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+      </button>
+
+      <section class="hidden md:flex gap-6" id="menu-desktop">
+        <button onclick="scrollToHome()" class="hover:bg-gray-600 px-6 py-2 rounded-2xl transition">Home</button>
+        <button onclick="scrollToProject()" class="hover:bg-gray-600 px-6 py-2 rounded-2xl transition">Project</button>
+        <button onclick="scrollToSkills()" class="hover:bg-gray-600 px-6 py-2 rounded-2xl transition">Skills</button>
+        <button onclick="scrollToCertificates()" class="hover:bg-gray-600 px-6 py-2 rounded-2xl transition">Certificates</button>
+        <button onclick="scrollToActivities()" class="hover:bg-gray-600 px-6 py-2 rounded-2xl transition">Activities</button>
+        <button onclick="scrollToInternship()" class="hover:bg-gray-600 px-6 py-2 rounded-2xl transition">Internship Experience</button>
+      </section>
+    </div>
+
+    <section id="menu-mobile" class="hidden flex-col gap-2 p-4 bg-[#2a2c3a]/70 rounded shadow-lg absolute right-4 top-16 w-52 md:hidden z-50">
+      <button onclick="scrollToHome()" class="w-full text-left hover:bg-gray-600 px-4 py-2 rounded-md transition">Home</button>
+      <button onclick="scrollToProject()" class="w-full text-left hover:bg-gray-600 px-4 py-2 rounded-md transition">Project</button>
+      <button onclick="scrollToSkills()" class="w-full text-left hover:bg-gray-600 px-4 py-2 rounded-md transition">Skills</button>
+      <button onclick="scrollToCertificates()" class="w-full text-left hover:bg-gray-600 px-4 py-2 rounded-md transition">Certificates</button>
+      <button onclick="scrollToActivities()" class="w-full text-left hover:bg-gray-600 px-4 py-2 rounded-md transition">Activities</button>
+      <button onclick="scrollToInternship()" class="w-full text-left hover:bg-gray-600 px-4 py-2 rounded-md transition">Internship Experience</button>
+    </section>
+  </nav>
+
+  <header class="pt-20 pb-12 max-w-6xl mx-auto px-4">
+    <div class="flex flex-col md:flex-row items-center md:items-start justify-center gap-8">
+      <img src="./images/face.jpg" alt="Profile" class="w-40 h-40 md:w-60 md:h-60 rounded-full object-cover shadow-lg" />
+      <div class="text-center md:text-left max-w-xl">
+        <h1 class="text-4xl font-bold mb-4">Supannika Khanenok</h1>
+        <h2 class="text-xl text-blue-400 font-semibold mb-4">Internship: System Engineer @ AskMe Solutions & Consultants Co., Ltd.</h2>
+        <p class="mb-6">
+          ฉันสำเร็จการศึกษาจาก มหาวิทยาลัยพะเยา คณะเทคโนโลยีสารสนเทศและการสื่อสาร สาขาวิศวกรรมคอมพิวเตอร์ โดยมีความสนใจในด้านการพัฒนาซอฟต์แวร์และระบบเว็บ ปัจจุบันฉันกำลังมองหาโอกาสในการทำงานในสาย Developer เพื่อพัฒนาทักษะและสร้างประสบการณ์ในการทำงานจริงในสายอาชีพด้านเทคโนโลยี
+        </p>
+        <p class="mb-6">
+          ฉันมีทักษะในการพัฒนาเว็บแอปพลิเคชัน โดยใช้เทคโนโลยีต่าง ๆ เช่น React, HTML, CSS, JavaScript, Node.js และ Express.js รวมถึงมีประสบการณ์ในการใช้เครื่องมือและภาษาโปรแกรมอื่น ๆ เช่น Python, Firebase, Java, C, C++ และเครื่องมือสำหรับการจัดการโค้ดอย่าง Git และ GitHub
+        </p>
+        <p class="mb-6">
+          ฉันมีความสนใจในการเรียนรู้และพัฒนาทักษะใหม่ ๆ ตลอดจนมีความรับผิดชอบในงานที่ได้รับมอบหมาย
+          มีความตั้งใจในการพัฒนาทักษะอย่างต่อเนื่อง และพร้อมที่จะปรับตัวเพื่อเผชิญกับความท้าทายต่าง ๆ เพื่อเติบโตและสร้างคุณค่าในสายงานด้านการพัฒนาซอฟต์แวร์ในอนาคต
+        </p>
+        <button onclick="scrollToFooter()" class="bg-blue-500 hover:bg-blue-600 px-6 py-2 rounded-3xl transition">Contact</button>
+      </div>
+    </div>
+  </header>
+
+  <section class="project max-w-6xl mx-auto px-4 mb-12">
+    <h2 class="text-2xl font-bold mb-6 py-6 text-center">Project</h2>
+    <div class="project-card bg-white text-gray-900 rounded-2xl shadow-lg p-6">
+      <h3 class="text-xl font-bold mb-3">Online Store Web Application System For Grocery Shops</h3>
+      <h3 class="text-lg font-semibold mb-2">Project Description:</h3>
+      <p class="mb-4 break-words max-h-48 overflow-auto">
+เว็บแอปพลิเคชันที่พัฒนาขึ้นเพื่อบริหารจัดการการขายสินค้าออนไลน์สำหรับร้านขายของชำ โดยออกแบบให้รองรับการดำเนินงานของร้านสะดวกซื้อ ระบบช่วยให้ลูกค้าสามารถเลือกดูสินค้า สั่งซื้อสินค้า และรับการแจ้งเตือนจากระบบได้ ขณะเดียวกันผู้ดูแลร้านสามารถจัดการสินค้า และสต็อกสินค้า ได้อย่างมีประสิทธิภาพ      </p>
+      <a href="project-details.html" class="inline-block border-b border-blue-500 text-blue-700 hover:text-blue-900 cursor-pointer mb-4">Read More</a>
+      <br />
+      <img src="images/projWeb2.png" alt="ภาพตัวอย่างหน้าเว็บแอปฯร้านขายของชำ" class="w-full max-w-2xl mx-auto rounded-lg mb-6" />
+      <img src="images/projWeb1.png" alt="ภาพตัวอย่างหน้าเว็บแอปฯร้านขายของชำ" class="w-full max-w-2xl mx-auto rounded-lg mb-6" />
+      <div>
+    </div>
+  </section>
+
+  <section class="skills max-w-6xl mx-auto px-4 mb-12">
+    <h2 class="text-2xl font-bold mb-6 py-6 text-center">Skills</h2>
+    <h3 class="text-xl font-bold mb-4 px-2 py-2">Soft Skills</h3>
+    <div class="skills-list flex flex-wrap gap-4 py-2">
+
+      <span class="bg-blue-500 text-white px-4 py-2 rounded-3xl">Communication</span>
+      <span class="bg-blue-500 text-white px-4 py-2 rounded-3xl">Teamwork</span>
+      <span class="bg-blue-500 text-white px-4 py-2 rounded-3xl">Problem Solving</span>
+      <span class="bg-blue-500 text-white px-4 py-2 rounded-3xl">Adaptability</span>
+      <span class="bg-blue-500 text-white px-4 py-2 rounded-3xl">Accountability</span>
+    </div>
+    <h3 class="text-xl font-bold mb-4 px-2 py-2">Hard Skills</h3>
+    <div class="skills-list flex flex-wrap gap-4 py-2">
+      <span class="bg-blue-500 text-white px-4 py-2 rounded-3xl">Node.js/Express.js</span>
+      <span class="bg-blue-500 text-white px-4 py-2 rounded-3xl">React</span>
+      <span class="bg-blue-500 text-white px-4 py-2 rounded-3xl">HTML</span>
+      <span class="bg-blue-500 text-white px-4 py-2 rounded-3xl">CSS</span>
+      <span class="bg-blue-500 text-white px-4 py-2 rounded-3xl">JavaScript</span>
+      <span class="bg-blue-500 text-white px-4 py-2 rounded-3xl">Tailwind CSS</span>
+      <span class="bg-blue-500 text-white px-4 py-2 rounded-3xl">Bootstrap</span>
+      <span class="bg-blue-500 text-white px-4 py-2 rounded-3xl">Firebase</span>
+      <span class="bg-blue-500 text-white px-4 py-2 rounded-3xl">Docker</span>
+      <span class="bg-blue-500 text-white px-4 py-2 rounded-3xl">MySQL Basic</span>
+      <span class="bg-blue-500 text-white px-4 py-2 rounded-3xl">XAMPP</span>
+      <span class="bg-blue-500 text-white px-4 py-2 rounded-3xl">Python</span>
+      <span class="bg-blue-500 text-white px-4 py-2 rounded-3xl">Java</span>
+      <span class="bg-blue-500 text-white px-4 py-2 rounded-3xl">C++</span>
+      <span class="bg-blue-500 text-white px-4 py-2 rounded-3xl">C</span>
+      <span class="bg-blue-500 text-white px-4 py-2 rounded-3xl">Git</span>
+      <span class="bg-blue-500 text-white px-4 py-2 rounded-3xl">GitHub</span>
+    </div>
+  </section>
+
+  <section class="certificates max-w-6xl mx-auto px-4 mb-12">
+  <h2 class="text-2xl font-bold mb-6 text-center">Certificates</h2>
+
+  <div class="relative w-full max-w-5xl mx-auto overflow-hidden">
+    <!-- Slide Container -->
+    <div id="certificateSlider" class="flex transition-transform duration-700 ease-in-out">
+      
+      <!-- Slide 1 -->
+      <div class="w-full flex-shrink-0 px-4 md:px-12 py-6">
+        <div class="bg-white rounded-xl shadow-md p-4 flex flex-col md:flex-row items-center gap-4 min-h-[280px]">
+          <img src="images/TESA.jpg" class="w-full md:w-1/2 rounded-md shadow-md" />
+          <div class="text-center md:text-left">
+            <h3 class="text-lg font-semibold text-gray-800 mb-2">TESA Top Gun Rally 2023 (19-25 พฤศจิกายน 2023) - ณ มหาวิทยาลัยอุบลราชธานี</h3>
+            <p class="text-sm text-gray-600">
+เข้าร่วมการแข่งขันพัฒนาโซลูชันสำหรับระบบสมองกลฝังตัว (Embedded Systems) เพื่อการบริหารจัดการสถานการณ์น้ำในบริบทการใช้งานจริง ภายใต้โจทย์ “ระบบการจัดการน้ำท่วม-น้ำแล้งอัจฉริยะ” (Smart Flood-Drought Management System) โดยรับผิดชอบหลักในส่วนของการบูรณาการฮาร์ดแวร์ (Hardware Integration) และการนำโมเดล AIoT ไปใช้งานจริง (AIoT Model Deployment)</p>
+            <a href="TESA-details.html" class="inline-block border-b border-blue-500 text-blue-700 hover:text-blue-900 cursor-pointer mb-4">Read More</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Slide 2 -->
+      <div class="w-full flex-shrink-0 px-4 md:px-12 py-6">
+        <div class="bg-white rounded-xl shadow-md p-4 flex flex-col md:flex-row items-center gap-4 min-h-[280px]">
+          <img src="images/cer0.jpg" class="w-full md:w-1/2 rounded-md shadow-md" />
+          <div class="text-center md:text-left">
+            <h3 class="text-lg font-semibold text-gray-800 mb-2">Basics Of Data Science</h3>
+            <p class="text-sm text-gray-600">เรียนรู้เรื่อง วิทยาการข้อมูลระดับพื้นฐาน(Basics of Data Science) By คณะICT มหาวิทยาลัยพะเยา และสนับสนุนโดยสถาบันข้อมูลขนาดใหญ่(องค์การมหาชน)หรือ Big Data Institute(Public Organization)</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- เพิ่ม slide เพิ่มเติมได้ที่นี่ -->
+        <div class="w-full flex-shrink-0 px-4 md:px-12 py-6">
+        <div class="bg-white rounded-xl shadow-md p-4 flex flex-col md:flex-row items-center gap-4">
+          <img src="images/cer1.jpg" class="w-full md:w-1/2 rounded-md shadow-md" />
+          <div class="text-center md:text-left">
+            <h3 class="text-lg font-semibold text-gray-800 mb-2">Phayao Learning City</h3>
+            <p class="text-sm text-gray-600">มหาวิทยาลัยพะเยา</p>
+          </div>
+        </div>
+      </div>
+
+       <div class="w-full flex-shrink-0 px-4 md:px-12 py-6">
+        <div class="bg-white rounded-xl shadow-md p-4 flex flex-col md:flex-row items-center gap-4">
+          <img src="images/cer2.jpg" class="w-full md:w-1/2 rounded-md shadow-md" />
+          <div class="text-center md:text-left">
+            <h3 class="text-lg font-semibold text-gray-800 mb-2">สื่อประชาสัมพันธ์เพื่อธุรกิจชุมชน</h3>
+            <p class="text-sm text-gray-600">มหาวิทยาลัยพะเยา</p>
+          </div>
+        </div>
+      </div>
+
+       <div class="w-full flex-shrink-0 px-4 md:px-12 py-6">
+        <div class="bg-white rounded-xl shadow-md p-4 flex flex-col md:flex-row items-center gap-4">
+          <img src="images/cerjava.jpg" class="w-full md:w-1/2 rounded-md shadow-md" />
+          <div class="text-center md:text-left">
+            <h3 class="text-lg font-semibold text-gray-800 mb-2">Java Programming Fundamentals</h3>
+            <p class="text-sm text-gray-600">การเขียนโปรแกรมคอมพิวเตอร์พื้นฐานด้วยจาวา By มหาวิทยาลัยบูรพา(BUU) MOOC</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="w-full flex-shrink-0 px-4 md:px-12 py-6">
+        <div class="bg-white rounded-xl shadow-md p-4 flex flex-col md:flex-row items-center gap-4">
+          <img src="images/pic1.jpg" class="w-full md:w-1/2 rounded-md shadow-md" />
+          <div class="text-center md:text-left">
+            <h3 class="text-lg font-semibold text-gray-800 mb-2">Omada GPON FTTR Solution</h3>
+            <p class="text-sm text-gray-600">อบรม TP-Link</p>
+          </div>
+        </div>
+      </div>
+
+       <div class="w-full flex-shrink-0 px-4 md:px-12 py-6">
+        <div class="bg-white rounded-xl shadow-md p-4 flex flex-col md:flex-row items-center gap-4">
+          <img src="images/pic2.jpg" class="w-full md:w-1/2 rounded-md shadow-md" />
+          <div class="text-center md:text-left">
+            <h3 class="text-lg font-semibold text-gray-800 mb-2">TP-Link Omada Network 6.0</h3>
+            <p class="text-sm text-gray-600">อบรม TP-Link</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="w-full flex-shrink-0 px-4 md:px-12 py-6">
+        <div class="bg-white rounded-xl shadow-md p-4 flex flex-col md:flex-row items-center gap-4">
+          <img src="images/pic3.jpg" class="w-full md:w-1/2 rounded-md shadow-md" />
+          <div class="text-center md:text-left">
+            <h3 class="text-lg font-semibold text-gray-800 mb-2">PowerBI For Beginners</h3>
+            <p class="text-sm text-gray-600">Microsoft และ SkillLane</p>
+          </div>
+        </div>
+      </div>
+
+       <div class="w-full flex-shrink-0 px-4 md:px-12 py-6">
+        <div class="bg-white rounded-xl shadow-md p-4 flex flex-col md:flex-row items-center gap-4">
+          <img src="images/pic4.jpg" class="w-full md:w-1/2 rounded-md shadow-md" />
+          <div class="text-center md:text-left">
+            <h3 class="text-lg font-semibold text-gray-800 mb-2">THAI MOOC</h3>
+            <p class="text-sm text-gray-600">ปลดล็อกพลัง AI ด้วยการเขียนโปรแกรม Python สำหรับผู้เริ่มต้น</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- ปุ่มควบคุม -->
+    <button onclick="prevCert()"
+      class="absolute left-[-10px] top-1/2 -translate-y-1/2 text-white p-3 shadow transition z-10">
+      <svg xmlns="http://www.w3.org/2000/svg" class="w-10 h-10" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+      </svg>
+    </button>
+
+    <button onclick="nextCert()"
+      class="absolute right-[-10px] top-1/2 -translate-y-1/2 text-whote p-3 shadow transition z-10">
+      <svg xmlns="http://www.w3.org/2000/svg" class="w-10 h-10" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+      </svg>
+    </button>
+  </div>
+  </section>
+
+  <section class="activities max-w-6xl mx-auto px-4 mb-12">
+    <h2 class="text-2xl font-bold mb-6 py-6 text-center">Activities</h2>
+    <div class="activities-list flex flex-wrap gap-4 justify-center">
+
+      <div class="w-full max-w-2xl flex flex-col items-center">
+        <a href="https://ict.up.ac.th/newsict/detail/1426" target="_blank" rel="noopener noreferrer">
+          <img src="https://ict.up.ac.th//upload/news/album/pic-202330111701324126_53562_40.jpg" alt="Activity 4" class="w-full rounded-lg shadow-md mb-2" />
+          <p class="text-base text-center text-blue-500 hover:underline cursor-pointer">เข้าร่วมแข่งขัน TESA Top Gun Rally 2023</p>
+        </a>
+      </div>
+
+      <div class="w-full max-w-2xl flex flex-col items-center">
+        <a href="https://ict.up.ac.th/newsict/detail/1474" target="_blank" rel="noopener noreferrer">
+          <img src="https://ict.up.ac.th//upload/news/real/pic-202422011705896216_78486_44-8480.jpg" alt="Activity 4" class="w-full rounded-lg shadow-md mb-2" />
+          <p class="text-base text-center text-blue-500 hover:underline cursor-pointer">อบรมเชิงปฏิบัติการ หัวข้อ “flutter”</p>
+        </a>
+      </div>
+
+      <div class="w-full max-w-2xl flex flex-col items-center">
+        <a href="https://ict.up.ac.th/newsict/detail/1545" target="_blank" rel="noopener noreferrer">
+          <img src="https://ict.up.ac.th//upload/news/album/pic-202410071720600017_60806_44.jpg" alt="Activity 4" class="w-full rounded-lg shadow-md mb-2" />
+          <p class="text-base text-center text-blue-500 hover:underline cursor-pointer">Northern Job Fair 2024</p>
+        </a>
+      </div>
+
+      <div class="w-full max-w-2xl flex flex-col items-center">
+        <a href="https://ict.up.ac.th/newsict/detail/1606" target="_blank" rel="noopener noreferrer">
+          <img src="https://ict.up.ac.th//upload/news/real/pic-202511021739264880_29429_44-7245.png" alt="Activity 4" class="w-full rounded-lg shadow-md mb-2" />
+          <p class="text-base text-center text-blue-500 hover:underline cursor-pointer">อบรมทักษะด้านวิทยาการข้อมูล ระดับพื้นฐาน</p>
+        </a>
+      </div>
+
+      <div class="w-full max-w-2xl flex flex-col items-center">
+        <a href="https://ict.up.ac.th/newsict/detail/835" target="_blank" rel="noopener noreferrer">
+          <img src="https://ict.up.ac.th//upload/news/real/062023165212.jpg" alt="Activity 4" class="w-full rounded-lg shadow-md mb-2" />
+          <p class="text-base text-center text-blue-500 hover:underline cursor-pointer">ทักษะการคิดสร้างสรรค์</p>
+        </a>
+      </div>
+
+      <div class="w-full max-w-2xl flex flex-col items-center">
+        <a href="https://ict.up.ac.th/newsict/detail/786" target="_blank" rel="noopener noreferrer">
+          <img src="https://ict.up.ac.th//upload/news/real/262022140428.jpg" alt="Activity 4" class="w-full rounded-lg shadow-md mb-2" />
+          <p class="text-base text-center text-blue-500 hover:underline cursor-pointer">ทักษะการบริหารจัดการเวลา</p>
+        </a>
+      </div>
+
+      <!-- <div class="w-full max-w-2xl flex flex-col items-center">
+        <img src="https://scontent-bkk1-1.xx.fbcdn.net/v/t39.30808-6/488752757_1395393025220492_629352208710022102_n.jpg?stp=dst-jpg_s960x960_tt6&_nc_cat=106&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeHcWcCGE-HtROABvd18aU7XSmoQyDAOO41KahDIMA47jUVIKDWniz3M0-TwB-nTcs8AgVyZzY8qbelrGkRVEeZh&_nc_ohc=J5zwJ2msFn4Q7kNvwHqS_z1&_nc_oc=Adl_mOvcLL0Jr1vmBHZETBDQRsJT3UhGcUUc-zi8tUv2zvQ-fC3VYPw_wXKDEogTNv8&_nc_zt=23&_nc_ht=scontent-bkk1-1.xx&_nc_gid=s9DdVancHWGz3YkVWZO4cA&oh=00_AfRVZYfDfk5JPCthWb2SK3FMYa3LlCCJGX8bqUfOrmhMFw&oe=688ABB6D" alt="Activity 1" class="w-full rounded-lg shadow-md mb-2" />
+        <p class="text-sm text-center text-gray-300">โครงการเตรียมความพร้อมนิสิตสหกิจศึกษาฯ หัวข้อ กฎหมายเบื้องต้นสำหรับการทำงาน</p>
+      </div>
+
+      <div class="w-full max-w-2xl flex flex-col items-center">
+        <img src="https://scontent-bkk1-2.xx.fbcdn.net/v/t39.30808-6/489510621_1394242698668858_3086286839632445330_n.jpg?stp=dst-jpg_s960x960_tt6&_nc_cat=103&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeGW4e0zo8Qn0HDXjcDac-aTG16EKOov_NsbXoQo6i_823QlqctOi42bHyjhsEF6HBBGif9FqXAdq3tyoFMTwSXj&_nc_ohc=Abh1mkxX9cYQ7kNvwFDGKmA&_nc_oc=Admn8o__BOyiL5YAJ8_GSD3eL6xQPN-Wu98-NpeRBKGR-NfIXNexQf0sb4mhIRg2bpA&_nc_zt=23&_nc_ht=scontent-bkk1-2.xx&_nc_gid=3JIGLcPK5vtXyHfUYFb80A&oh=00_AfRBc9ODK5xCwVWCsqOVHLFoevOy1nThkFfFgnirSdlZcw&oe=688ADB54" alt="Activity 2" class="w-full rounded-lg shadow-md mb-2" />
+        <p class="text-sm text-center text-gray-300">โครงการอบรมเตรียมความพร้อมนิสิตสหกิจศึกษาฯ หัวข้อ การเรียนรู้องค์กร/องค์การ และวัฒนธรรมการทำงาน</p>
+      </div>
+
+      <div class="w-full max-w-2xl flex flex-col items-center">
+        <img src="" alt="Activity 3" class="w-full rounded-lg shadow-md mb-2" />
+        <p class="text-sm text-center text-gray-300">อบรม Geospatial Big Data Analytics Workshop (Challenges and Opportunities in Geospatial Big Data Analytics)</p>
+      </div>
+
+      <div class="w-full max-w-2xl flex flex-col items-center">
+        <img src="" alt="Activity 4" class="w-full rounded-lg shadow-md mb-2" />
+        <p class="text-sm text-center text-gray-300">การอบรมเชิงปฏิบัติการการเตรียมพร้อมฝึกประสบการณ์วิชาชีพ ด้าน Hard Skill ปีการศึกษา 2567 "หลักสูตร Full Stack Developer"</p>
+      </div> -->
+
+      <div class="w-full max-w-2xl flex flex-col items-center">
+        <a href="https://ict.up.ac.th/newsict/detail/1613" target="_blank" rel="noopener noreferrer">
+          <img src="https://ict.up.ac.th//upload/news/album/pic-202507031741315212_27915_44.jpg" alt="Activity 4" class="w-full rounded-lg shadow-md mb-2" />
+          <p class="text-base text-center text-blue-500 hover:underline cursor-pointer">อบรมทักษะด้านวิทยาการข้อมูลระดับพื้นฐาน หลักสูตรด้าน Data Science และ Data Engineering</p>
+        </a>
+      </div>
+
+    </div>
+  </section>
+  
+<!-- internship -->
+  <section class="internship max-w-6xl mx-auto px-4 mb-12">
+  <h2 class="text-2xl font-bold mb-6 text-center">Internship Experience</h2>
+  <p class="text-center text-lg text-blue-400 mb-8 font-semibold">ตำแหน่ง: System Engineer @ AskMe Solutions & Consultants Co., Ltd.</p>
+
+  <div class="relative w-full max-w-5xl mx-auto overflow-hidden">
+    <div id="internshipSlider" class="flex transition-transform duration-700 ease-in-out">
+      
+      <div class="w-full flex-shrink-0 px-4 md:px-12 py-6">
+        <div class="bg-white rounded-xl shadow-md p-4 flex flex-col md:flex-row items-center gap-4 min-h-[280px]">
+          <img src="images/Picture1.jpg" class="w-full md:w-1/2 rounded-md shadow-md" />
+          <div class="text-center md:text-left">
+            <h3 class="text-lg font-semibold text-gray-800 mb-2">งานติดตั้งระบบกล้องวงจรปิด</h3>
+            <p class="text-sm text-gray-600">
+              ที่ พิพิธภัณฑ์เรือนโบราณล้านนามหาวิทยาลัยเชียงใหม่ โดยหน้าที่คือตตรวจสอบความถูกต้องของการติดตั้งกล้องวงจรปิดในแต่ละจุด และทำการทดสอบการใช้งานของกล้องวงจรปิดเพื่อให้แน่ใจว่าระบบทำงานได้อย่างถูกต้องและมีประสิทธิภาพ
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="w-full flex-shrink-0 px-4 md:px-12 py-6">
+        <div class="bg-white rounded-xl shadow-md p-4 flex flex-col md:flex-row items-center gap-4 min-h-[280px]">
+          <img src="images/Picture2.jpg" class="w-full md:w-1/2 rounded-md shadow-md" />
+          <div class="text-center md:text-left">
+            <h3 class="text-lg font-semibold text-gray-800 mb-2">งานการตั้งค่า Aruba Access Point</h3>
+            <p class="text-sm text-gray-600">
+              โดยตั้งค่าในโหมด IAP (Instant Access Point) เพื่อให้สามารถทำงานได้โดยไม่ต้องมี Controller และสามารถจัดการผ่าน Cloud ได้อย่างง่ายดาย  
+            </p>
+            </div>
+        </div>
+      </div>
+
+      <div class="w-full flex-shrink-0 px-4 md:px-12 py-6">
+        <div class="bg-white rounded-xl shadow-md p-4 flex flex-col md:flex-row items-center gap-4 min-h-[280px]">
+          <img src="images/3.png" class="w-full md:w-1/2 rounded-md shadow-md" />
+          <div class="text-center md:text-left">
+            <h3 class="text-lg font-semibold text-gray-800 mb-2">งานสร้าง Dashboard Grafana</h3>
+            <p class="text-sm text-gray-600">
+              เพื่อมอนิเตอร์สถานะของอุปกรณ์เครือข่ายและระบบต่าง ๆ ในองค์กร โดยใช้ Grafana เป็นเครื่องมือในการสร้าง Dashboard ที่สามารถแสดงข้อมูลแบบเรียลไทม์และวิเคราะห์ข้อมูลได้อย่างมีประสิทธิภาพ   
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="w-full flex-shrink-0 px-4 md:px-12 py-6">
+        <div class="bg-white rounded-xl shadow-md p-4 flex flex-col md:flex-row items-center gap-4 min-h-[280px]">
+          <img src="images/4.jpg" class="w-full md:w-1/2 rounded-md shadow-md" />
+          <div class="text-center md:text-left">
+            <h3 class="text-lg font-semibold text-gray-800 mb-2">งานทดสอบการใช้งาน Mini PC</h3>
+            <p class="text-sm text-gray-600">
+              ASUS NUC Essential 14 โดยทำการทดสอบการใช้งานในด้านต่าง ๆ เช่น การประมวลผล การเชื่อมต่อเครือข่าย และการใช้งานทั่วไป เพื่อประเมินประสิทธิภาพและความเหมาะสมในการใช้งานในสภาพแวดล้อมต่าง ๆ   
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="w-full flex-shrink-0 px-4 md:px-12 py-6">
+        <div class="bg-white rounded-xl shadow-md p-4 flex flex-col md:flex-row items-center gap-4 min-h-[280px]">
+          <img src="images/5.png" class="w-full md:w-1/2 rounded-md shadow-md" />
+          <div class="text-center md:text-left">
+            <h3 class="text-lg font-semibold text-gray-800 mb-2">สร้างระบบ AI Automation n8n</h3>
+            <p class="text-sm text-gray-600">
+              การสร้าง Workflow อัตโนมัติสำหรับการจัดการงานต่าง ๆ ในองค์กร เช่น การส่งอีเมลแจ้งเตือน การสร้างกิจกรรมในปฏิทิน และการเชื่อมต่อกับ API ต่าง ๆ เพื่อเพิ่มประสิทธิภาพในการทำงานและลดภาระงานที่ต้องทำด้วยมือ   
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="w-full flex-shrink-0 px-4 md:px-12 py-6">
+        <div class="bg-white rounded-xl shadow-md p-4 flex flex-col md:flex-row items-center gap-4 min-h-[280px]">
+          <img src="images/6.png" class="w-full md:w-1/2 rounded-md shadow-md" />
+          <div class="text-center md:text-left">
+            <h3 class="text-lg font-semibold text-gray-800 mb-2">การอบรมเรื่อง Omada GPON FTTR Solution และ TP-Link Omada Network 6.0</h3>
+            <p class="text-sm text-gray-600">
+              การอบรมเกี่ยวกับโซลูชัน Omada GPON FTTR (Fiber To The Room) ซึ่งเป็นเทคโนโลยีที่ใช้ในการเชื่อมต่ออินเทอร์เน็ตผ่านสายไฟเบอร์ออปติก และการใช้งาน TP-Link Omada Network 6.0 ซึ่งเป็นระบบจัดการเครือข่ายที่ช่วยให้สามารถควบคุมและบริหารจัดการเครือข่ายได้อย่างมีประสิทธิภาพ   
+            </p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <button onclick="prevIntern()"
+      class="absolute left-[-10px] top-1/2 -translate-y-1/2 text-white p-3 shadow transition z-10">
+      <svg xmlns="http://www.w3.org/2000/svg" class="w-10 h-10" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+      </svg>
+    </button>
+
+    <button onclick="nextIntern()"
+      class="absolute right-[-10px] top-1/2 -translate-y-1/2 text-white p-3 shadow transition z-10">
+      <svg xmlns="http://www.w3.org/2000/svg" class="w-10 h-10" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+      </svg>
+    </button>
+  </div>
+  </section>
+
+  <footer id="footer" class="bg-[#31323e]/70 text-center text-white py-2">
+    <div class="max-w-6xl mx-auto px-4 space-y-2">
+      <p class="font-semibold text-lg">Contact</p>
+      <p>Email: supannika546@gmail.com</p>
+      <p>Phone: 096-714-9212</p>
+      <p>
+        <button onclick="window.open('https://github.com/MissisA')" class="bg-blue-500 hover:bg-blue-600 text-white px-6 py-2 rounded-3xl transition">
+        GitHub
+        </button>
+      </p>
+    </div>
+    <div style="text-align: center; padding: 20px; font-size: 14px; color: #666;">
+       &copy; 2025 Supannika. All rights reserved.
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
