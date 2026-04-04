@@ -1,94 +1,26 @@
-let internIndex = 0;
+// ==========================================
+// 1. ระบบ Scroll ไปยังส่วนต่างๆ (Smooth Scrolling)
+// ==========================================
+function scrollToHome() { window.scrollTo({ top: 0, behavior: "smooth" }); }
+function scrollToProject() { document.querySelector(".project").scrollIntoView({ behavior: "smooth" }); }
+function scrollToSkills() { document.querySelector(".skills").scrollIntoView({ behavior: "smooth" }); }
+function scrollToCertificates() { document.querySelector(".certificates").scrollIntoView({ behavior: "smooth" }); }
+function scrollToActivities() { document.querySelector(".activities").scrollIntoView({ behavior: "smooth" }); }
+function scrollToInternship() { document.querySelector(".internship").scrollIntoView({ behavior: "smooth" }); }
+function scrollToFooter() { document.getElementById("footer").scrollIntoView({ behavior: "smooth" }); }
 
-function scrollToHome() {
-  window.scrollTo({ top: 0, behavior: "smooth" });
-}
-
-function scrollToProject() {
-  document.querySelector(".project").scrollIntoView({ behavior: "smooth" });
-}
-
-function scrollToSkills() {
-  // แก้เป็น selector ที่ถูกต้องของ section skills ที่คุณมี
-  document.querySelector(".skills").scrollIntoView({ behavior: "smooth" });
-}
-
-function scrollToCertificates() {
-  // แก้เป็น selector ที่ถูกต้องของ section certificates ที่คุณมี
-  document.querySelector(".certificates").scrollIntoView({ behavior: "smooth" });
-}
-
-function scrollToActivities() {
-  // แก้เป็น selector ที่ถูกต้องของ section activities ที่คุณมี
-  document.querySelector(".activities").scrollIntoView({ behavior: "smooth" });
-}
-
-function scrollToInternship() {
-  // แก้เป็น selector ที่ถูกต้องของ section internship ที่คุณมี
-  document.querySelector(".internship").scrollIntoView({ behavior: "smooth" });
-}
-
-function scrollToFooter() {
-  document.getElementById("footer").scrollIntoView({ behavior: "smooth" });
-}
-
-let certIndex = 0;
-const slider = document.getElementById("certificateSlider");
-
-  function updateCertSlider() {
-    const slide = slider.children[0];
-    const slideWidth = slide.getBoundingClientRect().width;
-    const offset = certIndex * slideWidth;
-    slider.style.transform = `translateX(-${offset}px)`;
-  }
-
-  function nextCert() {
-    const total = slider.children.length;
-    certIndex = (certIndex + 1) % total;
-    updateCertSlider();
-  }
-
-  function prevCert() {
-    const total = slider.children.length;
-    certIndex = (certIndex - 1 + total) % total;
-    updateCertSlider();
-  }
-
-  function showInternSlide(index) {
-    const slider = document.getElementById("internshipSlider");
-    const slides = slider.children;
-    
-    // วนลูปกลับไปสไลด์แรกหรือสไลด์สุดท้าย
-    if (index >= slides.length) internIndex = 0;
-    if (index < 0) internIndex = slides.length - 1;
-    
-    // เลื่อนสไลด์
-    slider.style.transform = `translateX(-${internIndex * 100}%)`;
-  }
-
-  function nextIntern() {
-    internIndex++;
-    showInternSlide(internIndex);
-  }
-
-  function prevIntern() {
-    internIndex--;
-    showInternSlide(internIndex);
-  }
-
-  // เรียกเมื่อโหลดหน้าเสร็จ
-  window.addEventListener("load", updateCertSlider);
-
-  // เรียกเมื่อเปลี่ยนขนาดจอ
-  window.addEventListener("resize", updateCertSlider);
-
+// ==========================================
+// 2. ระบบ Mobile Menu (เมนูมือถือ)
+// ==========================================
 const toggle = document.getElementById("menu-toggle");
 const mobileMenu = document.getElementById("menu-mobile");
 
+// เปิด-ปิดเมนู
 toggle.addEventListener("click", () => {
   mobileMenu.classList.toggle("hidden");
 });
 
+// ปิดเมนูอัตโนมัติเมื่อกดเลือกหัวข้อ
 const mobileButtons = mobileMenu.querySelectorAll("button");
 mobileButtons.forEach(button => {
   button.addEventListener("click", () => {
@@ -96,35 +28,119 @@ mobileButtons.forEach(button => {
   });
 });
 
+// ==========================================
+// 3. ระบบ Slider (Certificates)
+// ==========================================
+let certIndex = 0;
+const certSlider = document.getElementById("certificateSlider");
 
-// ===================================================================
-// ส่วนที่เพิ่มใหม่: ระบบเลื่อนอัตโนมัติ (Auto-play) สำหรับ Slider ทั้ง 2 ตัว
-// นำโค้ดนี้มาวางต่อท้ายไฟล์เดิมได้เลยครับ
-// ===================================================================
+function updateCertSlider() {
+  if (!certSlider || certSlider.children.length === 0) return;
+  const slideWidth = certSlider.children[0].getBoundingClientRect().width;
+  certSlider.style.transform = `translateX(-${certIndex * slideWidth}px)`;
+}
 
-// 1. ตั้งเวลาให้ฟังก์ชันเลื่อนไปข้างหน้าทำงานอัตโนมัติทุกๆ 5 วินาที (5000 ms)
+function nextCert() {
+  if (!certSlider) return;
+  certIndex = (certIndex + 1) % certSlider.children.length;
+  updateCertSlider();
+  resetAutoPlay('cert'); // รีเซ็ตเวลาอัตโนมัติเมื่อกดเอง
+}
+
+function prevCert() {
+  if (!certSlider) return;
+  const total = certSlider.children.length;
+  certIndex = (certIndex - 1 + total) % total;
+  updateCertSlider();
+  resetAutoPlay('cert');
+}
+
+// ==========================================
+// 4. ระบบ Slider (Internship)
+// ==========================================
+let internIndex = 0;
+const internSlider = document.getElementById("internshipSlider");
+
+function updateInternSlider() {
+  if (!internSlider || internSlider.children.length === 0) return;
+  const slideWidth = internSlider.children[0].getBoundingClientRect().width;
+  internSlider.style.transform = `translateX(-${internIndex * slideWidth}px)`;
+}
+
+function nextIntern() {
+  if (!internSlider) return;
+  internIndex = (internIndex + 1) % internSlider.children.length;
+  updateInternSlider();
+  resetAutoPlay('intern');
+}
+
+function prevIntern() {
+  if (!internSlider) return;
+  const total = internSlider.children.length;
+  internIndex = (internIndex - 1 + total) % total;
+  updateInternSlider();
+  resetAutoPlay('intern');
+}
+
+// ==========================================
+// 5. ระบบ Auto-play (เลื่อนอัตโนมัติ)
+// ==========================================
 let certAutoPlay = setInterval(nextCert, 5000);
 let internAutoPlay = setInterval(nextIntern, 5000);
 
-// 2. ระบบรีเซ็ตเวลาเมื่อผู้ใช้กดปุ่มเอง (เพื่อไม่ให้ภาพเลื่อนหนีทันทีที่เพิ่งกด)
-const sliderButtons = document.querySelectorAll('button');
+function resetAutoPlay(sliderType) {
+  if (sliderType === 'cert') {
+    clearInterval(certAutoPlay);
+    certAutoPlay = setInterval(nextCert, 5000);
+  } else if (sliderType === 'intern') {
+    clearInterval(internAutoPlay);
+    internAutoPlay = setInterval(nextIntern, 5000);
+  }
+}
 
-sliderButtons.forEach(button => {
-  const onclickAttr = button.getAttribute('onclick');
-  
-  // ถ้าระบุว่าเป็นปุ่มของหน้า Certificate
-  if (onclickAttr === 'nextCert()' || onclickAttr === 'prevCert()') {
-    button.addEventListener('click', () => {
-      clearInterval(certAutoPlay); // หยุดเวลาเดิม
-      certAutoPlay = setInterval(nextCert, 5000); // เริ่มนับเวลา 5 วินาทีใหม่
-    });
-  }
-  
-  // ถ้าระบุว่าเป็นปุ่มของหน้า Internship
-  if (onclickAttr === 'nextIntern()' || onclickAttr === 'prevIntern()') {
-    button.addEventListener('click', () => {
-      clearInterval(internAutoPlay); // หยุดเวลาเดิม
-      internAutoPlay = setInterval(nextIntern, 5000); // เริ่มนับเวลา 5 วินาทีใหม่
-    });
-  }
+// อัปเดตขนาดสไลเดอร์เมื่อโหลดหน้าจอ หรือหมุนจอมือถือ (Responsive)
+window.addEventListener("load", () => {
+  updateCertSlider();
+  updateInternSlider();
 });
+window.addEventListener("resize", () => {
+  updateCertSlider();
+  updateInternSlider();
+});
+
+// ==========================================
+// 6. 🚀 อัปเกรด UX มือถือ: ระบบ Swipe (ใช้นิ้วปัดเพื่อเลื่อน)
+// ==========================================
+let touchstartX = 0;
+let touchendX = 0;
+const SWIPE_THRESHOLD = 50; // ระยะปัดขั้นต่ำ (พิกเซล)
+
+function handleSwipeGesture(sliderElement, nextFunc, prevFunc) {
+  if (!sliderElement) return;
+
+  // เมื่อนิ้วเริ่มแตะจอ
+  sliderElement.addEventListener('touchstart', (e) => {
+    touchstartX = e.changedTouches[0].screenX;
+  }, { passive: true });
+
+  // เมื่อนิ้วปล่อยจากจอ
+  sliderElement.addEventListener('touchend', (e) => {
+    touchendX = e.changedTouches[0].screenX;
+    handleGesture(nextFunc, prevFunc);
+  }, { passive: true });
+}
+
+function handleGesture(nextFunc, prevFunc) {
+  // ปัดไปทางซ้าย (เลื่อนภาพต่อไป)
+  if (touchstartX - touchendX > SWIPE_THRESHOLD) {
+    nextFunc();
+  }
+  // ปัดไปทางขวา (เลื่อนภาพก่อนหน้า)
+  if (touchendX - touchstartX > SWIPE_THRESHOLD) {
+    prevFunc();
+  }
+}
+
+// เปิดใช้งานระบบปัดหน้าจอให้กับสไลเดอร์ทั้ง 2 ตัว
+handleSwipeGesture(document.getElementById('certificateSlider').parentElement, nextCert, prevCert);
+handleSwipeGesture(document.getElementById('internshipSlider').parentElement, nextIntern, prevIntern);
