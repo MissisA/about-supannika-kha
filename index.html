@@ -85,10 +85,37 @@
         <p class="mb-6 text-gray-300 leading-relaxed">
           ฉันมองว่าทุกความท้าทายทางเทคนิคคือประสบการณ์การเรียนรู้จากการลงมือทำ เป็นคนเปิดรับฟังความคิดเห็น เรียนรู้ไว ปรับตัวเก่ง และพร้อมเสมอที่จะพัฒนาตนเองเพื่อเป็นบุคลากรทางเทคนิคที่มีคุณค่าขององค์กร
         </p>
+
         
+        <div class="mt-6 mb-8 bg-gray-800/50 p-5 rounded-xl border border-gray-700 backdrop-blur-sm shadow-lg">
+          <h3 class="text-lg font-semibold text-blue-400 mb-3 border-b border-gray-700 pb-2">Profile & Education</h3>
+          <ul class="grid grid-cols-1 md:grid-cols-2 gap-4 text-gray-300 text-sm md:text-base">
+            <li class="flex items-center gap-2">
+              <span>🎓</span> 
+              <span><b>B.Eng. Computer Engineering</b><br>University of Phayao (GPA: 2.37)</span>
+            </li>
+            <li class="flex items-center gap-2">
+              <span>📍</span> 
+              <span><b>Location:</b><br>พร้อมปฏิบัติงานที่ จ.เชียงใหม่</span>
+            </li>
+            <li class="flex items-center gap-2">
+              <span>🗣️</span> 
+              <span><b>Languages:</b><br>Thai (Native) / English (A1)</span>
+            </li>
+          </ul>
+        </div>
+
+
         <div class="mt-8">
           <p class="text-sm text-gray-400 mb-3 text-center md:text-left">📄 My Resume (PDF):</p>
           <div class="flex flex-wrap gap-4 justify-center md:justify-start">
+
+            <a href="./resume-programm-supannika.pdf" target="_blank" rel="noopener noreferrer" class="border-2 border-pink-500 text-pink-400 hover:bg-pink-500 hover:text-white px-5 py-2.5 rounded-full transition-all duration-300 shadow-[0_0_15px_rgba(236,72,153,0.3)] hover:shadow-[0_0_20px_rgba(236,72,153,0.6)] flex items-center gap-2 font-semibold hover:-translate-y-1">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+              </svg>
+              Programmer / Developer / Software Engineer
+            </a>
             
             <a href="./resume-fullstack-supannika.pdf" target="_blank" rel="noopener noreferrer" class="border-2 border-blue-500 text-blue-400 hover:bg-blue-500 hover:text-white px-5 py-2.5 rounded-full transition-all duration-300 shadow-[0_0_15px_rgba(59,130,246,0.3)] hover:shadow-[0_0_20px_rgba(59,130,246,0.6)] flex items-center gap-2 font-semibold hover:-translate-y-1">
               <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -129,10 +156,10 @@
       <div class="mb-6 text-gray-400">
         <p class="mb-3">แพลตฟอร์มอีคอมเมิร์ซแบบครบวงจรที่พัฒนาขึ้นเพื่อเพิ่มประสิทธิภาพการจัดการร้านขายของชำ ครอบคลุมตั้งแต่การจัดการบัญชีผู้ใช้ แคตตาล็อกสินค้า และการติดตามคำสั่งซื้อแบบเรียลไทม์</p>
         <ul class="list-disc pl-6 space-y-2 text-sm md:text-base">
-          <li><b class="text-white">Front-end:</b> พัฒนาหน้าจอผู้ใช้ให้ตอบสนองได้ดี (Responsive) ด้วย React.js, HTML และ CSS</li>
-          <li><b class="text-white">Back-end:</b> สร้างระบบหลังบ้านที่รองรับการขยายตัวด้วย Node.js/Express.js และ Firebase Firestore สำหรับซิงก์ข้อมูลแบบเรียลไทม์</li>
-          <li><b class="text-white">Deployment:</b> จัดการแอปพลิเคชันให้อยู่ในรูปแบบ Docker Container เพื่อความเสถียรของสภาพแวดล้อม</li>
-          <li><b class="text-white">AI Tools:</b> ประยุกต์ใช้ AI ช่วยปรับปรุงโครงสร้างโค้ดและแก้ไขบั๊กอย่างรวดเร็ว</li>
+          <li><b class="text-white">Front-end:</b> พัฒนาหน้าจอผู้ใช้ให้ตอบสนองได้ดีด้วย React.js (รองรับการทำ System Integration ในอนาคต)</li>
+          <li><b class="text-white">Back-end & Database:</b> สร้างระบบหลังบ้านด้วย Node.js/Express.js และออกแบบโครงสร้างฐานข้อมูล (ใช้งานร่วมกับ Firebase)</li>
+          <li><b class="text-white">Testing & Debugging:</b> รับผิดชอบการตรวจสอบหาบั๊ก (Debug) และทำ UAT (User Acceptance Testing) ในระดับเบื้องต้นเพื่อให้ระบบทำงานได้อย่างเสถียร</li>
+          <li><b class="text-white">Deployment:</b> จัดการนำระบบขึ้น Production Server โดยใช้ Docker Container เพื่อความเสถียรและความปลอดภัยของสภาพแวดล้อม</li>
         </ul>
       </div>
       
@@ -167,15 +194,23 @@
 
     <h3 class="text-xl font-bold mb-4 text-blue-400">Hard Skills & Tech Stack</h3>
     <div class="flex flex-wrap gap-3 mb-8">
-      <span class="bg-blue-900/50 text-blue-300 border border-blue-500/30 px-5 py-2 rounded-full hover:bg-blue-600 hover:text-white hover:scale-105 transition-all shadow-sm cursor-default">React</span>
-      <span class="bg-green-900/50 text-green-300 border border-green-500/30 px-5 py-2 rounded-full hover:bg-green-600 hover:text-white hover:scale-105 transition-all shadow-sm cursor-default">Node.js / Express.js</span>
-      <span class="bg-yellow-900/50 text-yellow-300 border border-yellow-500/30 px-5 py-2 rounded-full hover:bg-yellow-600 hover:text-white hover:scale-105 transition-all shadow-sm cursor-default">JavaScript</span>
-      <span class="bg-sky-900/50 text-sky-300 border border-sky-500/30 px-5 py-2 rounded-full hover:bg-sky-500 hover:text-white hover:scale-105 transition-all shadow-sm cursor-default">Docker</span>
-      <span class="bg-orange-900/50 text-orange-300 border border-orange-500/30 px-5 py-2 rounded-full hover:bg-orange-500 hover:text-white hover:scale-105 transition-all shadow-sm cursor-default">Firebase (NoSQL)</span>
-      <span class="bg-blue-900/50 text-blue-300 border border-blue-500/30 px-5 py-2 rounded-full hover:bg-blue-500 hover:text-white hover:scale-105 transition-all shadow-sm cursor-default">MySQL</span>
-      <span class="bg-gray-800 border border-gray-700 px-5 py-2 rounded-full hover:bg-gray-700 hover:scale-105 transition-all shadow-sm cursor-default">Git / GitHub</span>
-      <span class="bg-gray-800 border border-gray-700 px-5 py-2 rounded-full hover:bg-gray-700 hover:scale-105 transition-all shadow-sm cursor-default">HTML / CSS / Tailwind / Bootstrap</span>
-      <span class="bg-gray-800 border border-gray-700 px-5 py-2 rounded-full hover:bg-gray-700 hover:scale-105 transition-all shadow-sm cursor-default">Python / Java / C++ / C</span>
+      <span class="bg-blue-900/50 text-blue-300 border border-blue-500/30 px-5 py-2 rounded-full hover:bg-blue-600 hover:text-white hover:scale-105 transition-all shadow-sm cursor-default font-bold tracking-wide">React</span>
+      <span class="bg-green-900/50 text-green-300 border border-green-500/30 px-5 py-2 rounded-full hover:bg-green-600 hover:text-white hover:scale-105 transition-all shadow-sm cursor-default font-bold tracking-wide">Node.js / Express.js</span>
+      <span class="bg-yellow-900/50 text-yellow-300 border border-yellow-500/30 px-5 py-2 rounded-full hover:bg-yellow-600 hover:text-white hover:scale-105 transition-all shadow-sm cursor-default font-bold tracking-wide">JavaScript</span>
+      <span class="bg-sky-900/50 text-sky-300 border border-sky-500/30 px-5 py-2 rounded-full hover:bg-sky-500 hover:text-white hover:scale-105 transition-all shadow-sm cursor-default font-bold tracking-wide">Docker</span>
+      <!-- <span class="bg-orange-900/50 text-orange-300 border border-orange-500/30 px-5 py-2 rounded-full hover:bg-orange-500 hover:text-white hover:scale-105 transition-all shadow-sm cursor-default">Firebase (NoSQL)</span>
+      <span class="bg-blue-900/50 text-blue-300 border border-blue-500/30 px-5 py-2 rounded-full hover:bg-blue-500 hover:text-white hover:scale-105 transition-all shadow-sm cursor-default">MySQL</span> -->
+      <span class="bg-gray-800 border border-gray-700 px-5 py-2 rounded-full hover:bg-gray-700 hover:scale-105 transition-all shadow-sm cursor-default font-bold tracking-wide">Git / GitHub</span>
+      <span class="bg-gray-800 border border-gray-700 px-5 py-2 rounded-full hover:bg-gray-700 hover:scale-105 transition-all shadow-sm cursor-default font-bold tracking-wide">HTML / CSS / Tailwind / Bootstrap</span>
+      <span class="bg-gray-800 border border-gray-700 px-5 py-2 rounded-full hover:bg-gray-700 hover:scale-105 transition-all shadow-sm cursor-default font-bold tracking-wide">Python / Java / C++ / C</span>
+    </div>
+
+    <h3 class="text-xl font-bold mb-4 text-emerald-400">Database & Data Management</h3>
+    <div class="flex flex-wrap gap-3 mb-8">
+      <span class="bg-emerald-900/50 text-emerald-300 border border-emerald-500/50 px-5 py-2 rounded-full hover:bg-emerald-600 hover:text-white hover:scale-105 transition-all cursor-default font-bold tracking-wide">SQL</span>
+      <span class="bg-emerald-900/50 text-emerald-300 border border-emerald-500/50 px-5 py-2 rounded-full hover:bg-emerald-600 hover:text-white hover:scale-105 transition-all cursor-default font-bold tracking-wide">MySQL</span>
+      <span class="bg-emerald-900/50 text-emerald-300 border border-emerald-500/50 px-5 py-2 rounded-full hover:bg-emerald-600 hover:text-white hover:scale-105 transition-all cursor-default font-bold tracking-wide">MongoDB</span>
+      <span class="bg-emerald-900/50 text-emerald-300 border border-emerald-500/30 px-5 py-2 rounded-full hover:bg-emerald-600 hover:text-white hover:scale-105 transition-all cursor-default font-bold tracking-wide">Firebase (NoSQL)</span>
     </div>
 
     <h3 class="text-xl font-bold mb-4 text-purple-400">AI for Development & Productivity</h3>
