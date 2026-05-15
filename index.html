@@ -45,6 +45,7 @@
       <section class="hidden md:flex gap-6" id="menu-desktop">
         <button onclick="scrollToHome()" class="hover:text-blue-400 font-medium transition">Home</button>
         <button onclick="scrollToProject()" class="hover:text-blue-400 font-medium transition">Project</button>
+        <button onclick="scrollToPersonalProject()" class="hover:text-blue-400 font-medium transition">Personal Projects</button>
         <button onclick="scrollToSkills()" class="hover:text-blue-400 font-medium transition">Skills</button>
         <button onclick="scrollToCertificates()" class="hover:text-blue-400 font-medium transition">Certificates</button>
         <button onclick="scrollToActivities()" class="hover:text-blue-400 font-medium transition">Activities</button>
@@ -55,6 +56,7 @@
     <section id="menu-mobile" class="hidden flex-col gap-2 p-4 bg-[#2a2c3a]/95 backdrop-blur-md rounded shadow-lg absolute right-4 top-16 w-52 md:hidden z-50">
       <button onclick="scrollToHome()" class="w-full text-left hover:bg-blue-600 px-4 py-2 rounded-md transition">Home</button>
       <button onclick="scrollToProject()" class="w-full text-left hover:bg-blue-600 px-4 py-2 rounded-md transition">Project</button>
+      <button onclick="scrollToPersonalProject()" class="w-full text-left hover:bg-blue-600 px-4 py-2 rounded-md transition">Personal Projects</button>
       <button onclick="scrollToSkills()" class="w-full text-left hover:bg-blue-600 px-4 py-2 rounded-md transition">Skills</button>
       <button onclick="scrollToCertificates()" class="w-full text-left hover:bg-blue-600 px-4 py-2 rounded-md transition">Certificates</button>
       <button onclick="scrollToActivities()" class="w-full text-left hover:bg-blue-600 px-4 py-2 rounded-md transition">Activities</button>
@@ -81,7 +83,7 @@
         </h2>
         
         <p class="mb-4 text-gray-300 leading-relaxed">
-          บัณฑิตจบใหม่ สาขาวิศวกรรมคอมพิวเตอร์ จากมหาวิทยาลัยพะเยา ที่มีความสนใจในสายงาน Full-stack/Frontend/UXUI ดิฉันมีทักษะในการพัฒนาเว็บแอปพลิเคชันแบบครบวงจร ครอบคลุมทั้งระบบหน้าบ้าน (Front-end) และหลังบ้าน (Back-end) รวมถึงมีความสามารถในการออกแบบและสร้างระบบที่รองรับการขยายตัว (Scalable Applications) ด้วยเทคโนโลยีสมัยใหม่ เช่น <span class="text-blue-400 font-semibold">React, Node.js (Express.js) และ Firebase</span>
+          บัณฑิตจบใหม่ สาขาวิศวกรรมคอมพิวเตอร์ จากมหาวิทยาลัยพะเยา ที่มีความสนใจในสายงาน Full-stack/Frontend/UXUI หรือ งานที่เกี่ยวข้องกับการใช้ AI ในการ generate code ดิฉันมีทักษะในการพัฒนาเว็บแอปพลิเคชันแบบครบวงจร ครอบคลุมทั้งระบบหน้าบ้าน (Front-end) และหลังบ้าน (Back-end) รวมถึงมีความสามารถในการออกแบบและสร้างระบบที่รองรับการขยายตัว (Scalable Applications) ด้วยเทคโนโลยีสมัยใหม่ เช่น <span class="text-blue-400 font-semibold">React, Node.js (Express.js) และ Firebase</span>
         </p>
         <p class="mb-4 text-gray-300 leading-relaxed">
           ในฐานะนักพัฒนาที่นำเครื่องมือ AI มาปรับใช้กับการทำงาน <span class="text-purple-400 font-semibold">(AI-Augmented Developer)</span> ดิฉันรู้จักประยุกต์ใช้ AI เพื่อช่วยเพิ่มประสิทธิภาพในการเขียนโค้ด ตรวจสอบข้อผิดพลาด (Debug) และแก้ปัญหา เพื่อส่งมอบงานที่มีคุณภาพและรวดเร็ว
@@ -103,7 +105,7 @@
             </li>
             <li class="flex items-center gap-2">
               <span>📍</span> 
-              <span><b>Location:</b><br>จ.เพชรบูรณ์ (พร้อมปฏิบัติงานที่ จ.เชียงใหม่ / กรุงเทพฯ และปริมณฑล) | พร้อมเริ่มงาน: ภายใน 15-30 วัน</span>
+              <span><b>รูปแบบการทำงานที่สนใจ:</b><br> อันดับ 1 รูปแบบ Remote <br>อันดับ 2 รูปแบบ Hybrid <br> อันดับ 3 รูปแบบ On-site</span>
             </li>
             <li class="flex items-center gap-2">
               <span>🗣️</span> 
@@ -113,7 +115,7 @@
         </div>
 
 
-        <div class="mt-8">
+        <!-- <div class="mt-8">
           <p class="text-sm text-gray-400 mb-3 text-center md:text-left">📄 My Resume (PDF):</p>
           <div class="flex flex-wrap gap-4 justify-center md:justify-start">
             
@@ -130,7 +132,7 @@
               </svg>
               Frontend Developer / UXUI Designer
             </a>
-          </div>
+          </div> -->
 
           <div class="flex justify-center md:justify-start mt-4">
             <button onclick="scrollToFooter()" class="bg-gray-700 hover:bg-gray-600 px-6 py-2.5 rounded-full transition-all duration-300 shadow-md font-semibold hover:-translate-y-1">
@@ -166,6 +168,51 @@
       
       <a href="project-details.html" class="inline-block border-b border-blue-500 text-blue-400 hover:text-blue-300 cursor-pointer mb-6">Read More</a>
 
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div class="overflow-hidden rounded-xl border border-gray-700 group cursor-pointer">
+          <img src="images/projWeb2.png" alt="ภาพหน้าเว็บแอปฯ 1" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" />
+        </div>
+        <div class="overflow-hidden rounded-xl border border-gray-700 group cursor-pointer">
+          <img src="images/projWeb1.png" alt="ภาพหน้าเว็บแอปฯ 2" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" />
+        </div>
+        <div class="overflow-hidden rounded-xl border border-gray-700 group cursor-pointer">
+          <img src="images/projWeb3.png" alt="ภาพหน้าเว็บแอปฯ 3" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" />
+        </div>
+        <div class="overflow-hidden rounded-xl border border-gray-700 group cursor-pointer">
+          <img src="images/projWeb4.png" alt="ภาพหน้าเว็บแอปฯ 4" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" />
+        </div>
+        <div class="overflow-hidden rounded-xl border border-gray-700 group cursor-pointer">
+          <img src="images/projWeb5.png" alt="ภาพหน้าเว็บแอปฯ 5" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" />
+        </div>
+        <div class="overflow-hidden rounded-xl border border-gray-700 group cursor-pointer">
+          <img src="images/projWeb6.png" alt="ภาพหน้าเว็บแอปฯ 6" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" />
+      </div>
+    </div>
+  </section>
+
+  <section class="project max-w-6xl mx-auto px-4 mb-20 reveal">
+    <div class="flex items-center justify-center gap-4 mb-8">
+      <div class="h-px bg-gray-700 flex-1 max-w-[100px]"></div>
+      <h2 class="text-3xl font-bold tracking-wider">PERSONAL PROJECTS</h2>
+      <div class="h-px bg-gray-700 flex-1 max-w-[100px]"></div>
+    </div>
+
+    <div class="project-card bg-[#1e202c] border border-gray-800 text-white rounded-2xl shadow-xl p-8 transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_10px_30px_rgba(59,130,246,0.15)] hover:border-blue-500/30">
+      <h3 class="text-2xl font-bold mb-4 text-blue-400">Project 1: Automated YouTube Shorts Generator Tools: n8n</h3>
+      <h3 class="text-lg font-semibold mb-3 text-gray-300">รายละเอียดโปรเจกต์ :</h3>
+      
+      <div class="mb-6 text-gray-400">
+        <p class="mb-3">
+ออกแบบและพัฒนาระบบ Automation Workflow ผ่าน n8n เพื่อสร้างวิดีโอสั้นแบบอัตโนมัติ โดยระบบจะดึงคลิปวิดีโอจากแหล่ง Free Source, สั่งงาน AI ให้เขียนสคริปต์ (Prompt Engineering) และสร้างเสียงพากย์ (AI Voiceover) แบบอัตโนมัติ</p>
+      </div>
+
+      <h3 class="text-2xl font-bold mb-4 text-blue-400">Project 2: Persona-based AI Chatbot Tools: Dify</h3>
+      <h3 class="text-lg font-semibold mb-3 text-gray-300">รายละเอียดโปรเจกต์ :</h3>
+      
+      <div class="mb-6 text-gray-400">
+        <p class="mb-3">พัฒนา AI Chatbot ที่สวมบทบาทเป็นตัวละคร (Character AI) ผ่านแพลตฟอร์ม Dify โดยใช้เทคนิค Prompt Engineering ในการควบคุมบุคลิกภาพ</p>
+      </div>
+      
       <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
         <div class="overflow-hidden rounded-xl border border-gray-700 group cursor-pointer">
           <img src="images/projWeb2.png" alt="ภาพหน้าเว็บแอปฯ 1" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" />
@@ -529,7 +576,7 @@
   
   <script>
     // 1. ลูกเล่น Typewriter Effect (ตัวหนังสือพิมพ์เอง)
-    const textToType = "Fullstack Developer / Frontend Developer";
+    const textToType = "Fullstack Developer / Frontend Developer / AI Vibe coder";
     const typeWriterElement = document.getElementById("typewriter-text");
     let i = 0;
     
