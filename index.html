@@ -1,376 +1,345 @@
 <!DOCTYPE html>
 <html lang="th">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Portfolio - Supannika</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portfolio | Supannika Khanenok</title>
+  <!-- เรียกใช้งาน Tailwind CSS Play CDN เพื่อรองรับ Utility Classes ทั้งหมด -->
   <script src="https://cdn.tailwindcss.com"></script>
-
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-SRNDPK7053"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-SRNDPK7053');
-  </script>
-
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Noto+Sans+Thai:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
   <style>
+    /* เปิดลูกเล่น Smooth Scroll เวลาคลิกเมนูใน Tab Bar ให้หน้าเว็บเลื่อนนุ่มๆ */
+    html {
+      scroll-behavior: smooth;
+    }
+    body {
+      background-color: #0b0c10; /* ปรับพื้นหลังให้มืดลึก มีมิติมากขึ้น */
+      color: #e2e8f0;
+      font-family: 'Inter', 'Noto Sans Thai', sans-serif;
+    }
+    /* เอฟเฟกต์ Scroll Reveal ค่อยๆ เลื่อนปรากฏเมื่อเลื่อนจอลงมา */
     .reveal {
       opacity: 0;
-      transform: translateY(30px);
-      transition: all 0.8s ease-out;
+      transform: translateY(40px);
+      transition: all 0.9s cubic-bezier(0.16, 1, 0.3, 1);
     }
     .reveal.active {
       opacity: 1;
       transform: translateY(0);
     }
-    ::-webkit-scrollbar { width: 8px; }
-    ::-webkit-scrollbar-track { background: #1e202c; }
-    ::-webkit-scrollbar-thumb { background: #3b82f6; border-radius: 4px; }
-    ::-webkit-scrollbar-thumb:hover { background: #2563eb; }
   </style>
 </head>
-<body class="bg-gray-900 text-white overflow-x-hidden">
+<body class="bg-[#0b0c10] text-gray-200 overflow-x-hidden relative">
 
-  <nav class="fixed top-0 w-full text-white p-4 z-50 bg-[#1e202c]/80 backdrop-blur-md shadow-lg">
-    <div class="max-w-6xl mx-auto flex items-center justify-between">
-      <h1 class="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-purple-500">Supannika.Dev</h1>
+  <!-- ================= AMBIENT GLOW BACKGROUND (วงแสงนีออนฟุ้งๆ ด้านหลัง เพิ่มมิติ) ================= -->
+  <div class="absolute top-[-5%] left-[-10%] w-[500px] h-[500px] bg-blue-500/10 rounded-full blur-[120px] pointer-events-none"></div>
+  <div class="absolute top-[25%] right-[-10%] w-[600px] h-[600px] bg-purple-500/10 rounded-full blur-[150px] pointer-events-none"></div>
+  <div class="absolute top-[60%] left-[-5%] w-[500px] h-[500px] bg-pink-500/5 rounded-full blur-[130px] pointer-events-none"></div>
+  <div class="absolute bottom-[5%] right-[5%] w-[400px] h-[400px] bg-blue-500/10 rounded-full blur-[120px] pointer-events-none"></div>
 
-      <button id="menu-toggle" class="md:hidden focus:outline-none">
-        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-        </svg>
-      </button>
-
-      <section class="hidden md:flex gap-6" id="menu-desktop">
-        <button onclick="scrollToHome()" class="hover:text-blue-400 font-medium transition">Home</button>
-        <button onclick="scrollToProject()" class="hover:text-blue-400 font-medium transition">Project</button>
-        <button onclick="scrollToPersonalProject()" class="hover:text-blue-400 font-medium transition">Personal Projects</button>
-        <button onclick="scrollToSkills()" class="hover:text-blue-400 font-medium transition">Skills</button>
-        <button onclick="scrollToCertificates()" class="hover:text-blue-400 font-medium transition">Certificates</button>
-        <button onclick="scrollToActivities()" class="hover:text-blue-400 font-medium transition">Activities</button>
-        <button onclick="scrollToInternship()" class="hover:text-blue-400 font-medium transition">Internship</button>
-      </section>
-    </div>
-
-    <section id="menu-mobile" class="hidden flex-col gap-2 p-4 bg-[#2a2c3a]/95 backdrop-blur-md rounded shadow-lg absolute right-4 top-16 w-52 md:hidden z-50">
-      <button onclick="scrollToHome()" class="w-full text-left hover:bg-blue-600 px-4 py-2 rounded-md transition">Home</button>
-      <button onclick="scrollToProject()" class="w-full text-left hover:bg-blue-600 px-4 py-2 rounded-md transition">Project</button>
-      <button onclick="scrollToPersonalProject()" class="w-full text-left hover:bg-blue-600 px-4 py-2 rounded-md transition">Personal Projects</button>
-      <button onclick="scrollToSkills()" class="w-full text-left hover:bg-blue-600 px-4 py-2 rounded-md transition">Skills</button>
-      <button onclick="scrollToCertificates()" class="w-full text-left hover:bg-blue-600 px-4 py-2 rounded-md transition">Certificates</button>
-      <button onclick="scrollToActivities()" class="w-full text-left hover:bg-blue-600 px-4 py-2 rounded-md transition">Activities</button>
-      <button onclick="scrollToInternship()" class="w-full text-left hover:bg-blue-600 px-4 py-2 rounded-md transition">Internship</button>
-    </section>
-  </nav>
-
-  <header class="pt-28 pb-12 max-w-6xl mx-auto px-4 reveal active">
-    <div class="flex flex-col md:flex-row items-center md:items-start justify-center gap-10">
-      <div class="relative group cursor-pointer">
-        <div class="absolute -inset-1 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full blur opacity-25 group-hover:opacity-50 transition duration-1000"></div>
-        <img src="./images/face.jpg" alt="Profile" class="relative w-40 h-40 md:w-60 md:h-60 rounded-full object-cover border-4 border-gray-800 shadow-xl transition transform hover:scale-105 duration-300" />
+  <!-- ================= FLOATING GLASSMORPHISM TAB BAR (แท็บเมนูลอยกระจกฝ้าสุดจึ้ง) ================= -->
+  <header class="sticky top-4 z-50 max-w-3xl mx-auto px-4 mt-4">
+    <nav class="bg-[#161925]/70 backdrop-blur-md border border-gray-800/60 rounded-full px-5 py-3 flex items-center justify-between shadow-[0_8px_32px_0_rgba(0,0,0,0.5)] transition-all duration-300 hover:border-purple-500/30">
+      <div class="text-white font-extrabold text-base md:text-lg tracking-wider bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-pink-500">
+        📌 SK.PORTFOLIO
       </div>
-      
-      <div class="text-center md:text-left max-w-xl">
-        <h1 class="text-4xl md:text-5xl font-bold mb-3 tracking-tight">Supannika Khanenok</h1>
-
-        <h2 class="text-xl md:text-2xl text-gray-400 mb-4 font-medium tracking-wide">
-          สุพรรณนิกา คะเนนอก (แอปเปิ้ล)
-        </h2>
-        
-        <!-- แทนที่แท็กเดิมของคุณด้วยโค้ดนี้ (เลือกเปลี่ยนชื่อสีตามใจชอบ) -->
-        <!-- สไตล์ไล่สี ฟ้า-ม่วง ตัวหนังสือจะเปลี่ยนเฉดตามที่พิมพ์ออกมารูปแบบสวยงาม -->
-<!-- <h3 id="typewriter-text" class="text-xl md:text-2xl font-bold bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-600 bg-clip-text text-transparent min-h-[40px]">
-          <span id="typewriter-text"></span><span class="animate-pulse ml-1">|</span>
-        </h3>
-        
-        <p class="mb-4 text-gray-300 leading-relaxed">
-          บัณฑิตจบใหม่สาขาวิศวกรรมคอมพิวเตอร์ ที่ชื่นชอบในการพัฒนาซอฟต์แวร์และการสร้างระบบ ดิฉันไม่ได้จำกัดตัวเองไว้กับชื่อตำแหน่งใดตำแหน่งหนึ่ง แต่มีความพร้อมและเปิดรับทุกบทบาทที่เปิดโอกาสให้ได้ใช้ทักษะ <span class="text-blue-400 font-semibold">Fullstack Development (React, Node.js)</span> และการทำ <span class="text-blue-400 font-semibold">System/AI Automation (n8n, Dify)</span> เพื่อเข้าไปช่วยแก้ปัญหาและสร้างระบบที่ดีเยี่ยมร่วมกับทีม
-        </p>
-        <p class="mb-4 text-gray-300 leading-relaxed">
-          ในฐานะนักพัฒนาที่นำเครื่องมือ AI มาปรับใช้กับการทำงาน <span class="text-purple-400 font-semibold">(AI-Augmented Developer)</span> ดิฉันรู้จักประยุกต์ใช้ AI เพื่อช่วยเพิ่มประสิทธิภาพในการเขียนโค้ด ตรวจสอบข้อผิดพลาด (Debug) และแก้ปัญหา เพื่อส่งมอบงานที่มีคุณภาพและรวดเร็ว
-        </p>
-        <p class="mb-6 text-gray-300 leading-relaxed">
-          ดิฉันมองว่าทุกความท้าทายทางเทคนิคคือประสบการณ์การเรียนรู้จากการลงมือทำจริง เป็นคนเปิดรับฟังความคิดเห็น เรียนรู้ไว ปรับตัวเก่ง และพร้อมที่จะพัฒนาต่อยอดความรู้เดิม รวมถึงเปิดรับเทคโนโลยีใหม่ ๆ เพื่อก้าวไปเป็นบุคลากรด้านเทคนิคที่มีคุณค่าและพร้อมขับเคลื่อนองค์กรให้เติบโต
-        </p>
-        
-        <div class="mt-6 mb-8 bg-gray-800/50 p-5 rounded-xl border border-gray-700 backdrop-blur-sm shadow-lg">
-          <h3 class="text-lg font-semibold text-blue-400 mb-3 border-b border-gray-700 pb-2">Profile & Education</h3>
-          <ul class="grid grid-cols-1 md:grid-cols-2 gap-4 text-gray-300 text-sm md:text-base">
-            <li class="flex items-center gap-2">
-              <span>🎓</span> 
-              <span><b>B.Eng. Computer Engineering</b><br>University of Phayao (GPA: 2.37)</span>
-            </li>
-            <li class="flex items-center gap-2">
-              <span>🎓</span> 
-              <span><b>Science-Mathematics-Computer Program</b><br>Nongphai School (GPAX: 3.41)</span>
-            </li>
-            <li class="flex items-center gap-2">
-              <span>📍</span> 
-              <span><b>รูปแบบการทำงานที่สนใจ:</b><br> อันดับ 1 รูปแบบ Remote (WFH) <br>อันดับ 2 รูปแบบ Hybrid <br> อันดับ 3 รูปแบบ On-site</span>
-            </li>
-            <li class="flex items-center gap-2">
-              <span>🗣️</span> 
-              <span><b>Languages:</b><br>Thai (Native) / English (Basic-A1)</span>
-            </li>
-          </ul>
-        </div> -->
-
-
-        <!-- <div class="mt-8">
-          <p class="text-sm text-gray-400 mb-3 text-center md:text-left">📄 My Resume (PDF):</p>
-          <div class="flex flex-wrap gap-4 justify-center md:justify-start">
-            
-            <a href="./resume-fullstack-pgm.pdf" target="_blank" rel="noopener noreferrer" class="border-2 border-blue-500 text-blue-400 hover:bg-blue-500 hover:text-white px-5 py-2.5 rounded-full transition-all duration-300 shadow-[0_0_15px_rgba(59,130,246,0.3)] hover:shadow-[0_0_20px_rgba(59,130,246,0.6)] flex items-center gap-2 font-semibold hover:-translate-y-1">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-              </svg>
-              Fullstack Developer / Programmer
-            </a>
-
-            <a href="./resume-frontend-uxui.pdf" target="_blank" rel="noopener noreferrer" class="border-2 border-purple-500 text-purple-400 hover:bg-purple-500 hover:text-white px-5 py-2.5 rounded-full transition-all duration-300 shadow-[0_0_15px_rgba(168,85,247,0.3)] hover:shadow-[0_0_20px_rgba(168,85,247,0.6)] flex items-center gap-2 font-semibold hover:-translate-y-1">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
-              </svg>
-              Frontend Developer / UXUI Designer
-            </a>
-          </div> -->
-
-          <div class="flex justify-center md:justify-start mt-4">
-            <button onclick="scrollToFooter()" class="bg-gray-700 hover:bg-gray-600 px-6 py-2.5 rounded-full transition-all duration-300 shadow-md font-semibold hover:-translate-y-1">
-              Contact Me
-            </button>
-          </div>
-        </div>
-
+      <!-- เมนูลิงก์ที่จะ Scroll นุ่มๆ ไปตามส่วนต่างๆ -->
+      <div class="flex gap-1 md:gap-2 text-xs md:text-sm text-gray-300 font-medium">
+        <a href="#" class="hover:text-white px-3 py-1.5 rounded-full transition-all hover:bg-white/5">Home</a>
+        <a href="#skills-section" class="hover:text-white px-3 py-1.5 rounded-full transition-all hover:bg-white/5">Skills</a>
+        <a href="#projects-section" class="hover:text-white px-3 py-1.5 rounded-full transition-all hover:bg-white/5">Projects</a>
+        <a href="#certs-section" class="hover:text-white px-3 py-1.5 rounded-full transition-all hover:bg-white/5">Certs</a>
+        <a href="#footer" class="bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 text-white px-4 py-1.5 rounded-full shadow-md hover:opacity-90 hover:scale-105 transition-all text-xs">Contact</a>
       </div>
-    </div>
+    </nav>
   </header>
 
-  <section class="project max-w-6xl mx-auto px-4 mb-20 reveal">
-    <div class="flex items-center justify-center gap-4 mb-8">
-      <div class="h-px bg-gray-700 flex-1 max-w-[100px]"></div>
-      <h2 class="text-3xl font-bold tracking-wider">PROJECTS</h2>
-      <div class="h-px bg-gray-700 flex-1 max-w-[100px]"></div>
+  <!-- ================= HERO SECTION (แนะนำตัวหลักเพื่อรองรับ Typewriter) ================= -->
+  <section class="hero min-h-[55vh] flex flex-col items-center justify-center text-center px-4 max-w-4xl mx-auto mt-8 mb-10 relative z-10">
+    <h1 class="text-4xl md:text-6xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500 mb-4 tracking-tight">
+      Supannika Khanenok
+    </h1>
+    <p class="text-xl md:text-2xl text-purple-400 font-semibold mb-6 tracking-wide">Full-stack Developer</p>
+    <div class="min-h-[60px] max-w-2xl">
+      <p id="typewriter-text" class="text-base md:text-lg text-gray-400 font-mono tracking-wide leading-relaxed"></p>
     </div>
-    
-    <div class="project-card bg-[#1e202c] border border-gray-800 text-white rounded-2xl shadow-xl p-8 transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_10px_30px_rgba(59,130,246,0.15)] hover:border-blue-500/30">
-      <h3 class="text-2xl font-bold mb-4 text-blue-400">Online Store Web Application System For Grocery Shops</h3>
-      <h3 class="text-lg font-semibold mb-3 text-gray-300">รายละเอียดโปรเจกต์ (Fullstack Development):</h3>
-      
-      <div class="mb-6 text-gray-400">
-        <p class="mb-3">แพลตฟอร์มอีคอมเมิร์ซแบบครบวงจรที่พัฒนาขึ้นเพื่อเพิ่มประสิทธิภาพการจัดการร้านขายของชำ ครอบคลุมตั้งแต่การจัดการบัญชีผู้ใช้ แคตตาล็อกสินค้า และการติดตามคำสั่งซื้อแบบเรียลไทม์</p>
-        <ul class="list-disc pl-6 space-y-2 text-sm md:text-base">
-          <li><b class="text-white">Front-end:</b> พัฒนาหน้าจอผู้ใช้ให้ตอบสนองได้ดีด้วย React.js (รองรับการทำ System Integration ในอนาคต)</li>
-          <li><b class="text-white">Back-end & Database:</b> สร้างระบบหลังบ้านด้วย Node.js/Express.js และออกแบบโครงสร้างฐานข้อมูล (ใช้งานร่วมกับ Firebase)</li>
-          <li><b class="text-white">Testing & Debugging:</b> รับผิดชอบการตรวจสอบหาบั๊ก (Debug) และทำ UAT (User Acceptance Testing) ในระดับเบื้องต้นเพื่อให้ระบบทำงานได้อย่างเสถียร</li>
-          <li><b class="text-white">Deployment:</b> ติดตั้งและบริหารจัดการแอปพลิเคชันบน Firebase โดยใช้ Firebase Hosting เพื่อการส่งข้อมูลที่รวดเร็ว เสถียร และรองรับการเข้าถึงจากทุกที่</li>
+  </section>
+
+  <!-- ================= TECHNICAL & SOFT SKILLS SECTION ================= -->
+  <section id="skills-section" class="skills max-w-6xl mx-auto px-4 mb-24 reveal relative z-10">
+    <div class="flex items-center justify-center gap-4 mb-8">
+      <div class="h-px bg-gradient-to-r from-transparent to-gray-700 flex-1 max-w-[150px]"></div>
+      <h2 class="text-2xl md:text-3xl font-extrabold tracking-wider text-white text-center">TECHNICAL & SOFT SKILLS</h2>
+      <div class="h-px bg-gradient-to-l from-transparent to-gray-700 flex-1 max-w-[150px]"></div>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+      <!-- Frontend -->
+      <div class="bg-[#131622]/90 backdrop-blur-sm p-6 rounded-2xl border border-gray-800/80 shadow-xl hover:border-blue-500/50 hover:shadow-[0_0_25px_rgba(59,130,246,0.15)] transition-all duration-300 group">
+        <h3 class="text-xl font-bold text-blue-400 mb-4 flex items-center gap-2 group-hover:scale-105 transition-transform">💻 Frontend</h3>
+        <ul class="text-gray-300 space-y-2 text-sm">
+          <li>• HTML, CSS, JavaScript</li>
+          <li>• React</li>
+          <li>• Next.js</li>
+          <li>• Vue</li>
+          <li>• Tailwind CSS, Bootstrap</li>
         </ul>
-        
-        <!-- ส่วนที่เพิ่มใหม่: Live Demo & Test Accounts -->
-        <div class="mt-8 bg-gray-800/60 p-6 rounded-xl border border-gray-700">
-          <h4 class="text-lg font-semibold text-white flex items-center gap-2 mb-3">
-            <span class="text-blue-400">🚀</span> Live Demo & Test Accounts
-          </h4>
-          <p class="text-gray-300 text-sm md:text-base mb-4">
-            สามารถเข้าไปทดลองใช้งานระบบจริงได้ที่: <br/>
-            <a href="https://groceryshopweb.web.app/" target="_blank" class="text-blue-400 hover:text-blue-300 underline font-medium break-all">https://groceryshopweb.web.app/</a>
-          </p>
-          
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <!-- Admin Account -->
-            <div class="bg-[#15161e] p-4 rounded-lg border border-gray-600">
-              <p class="text-sm font-medium text-gray-400 mb-2 border-b border-gray-700 pb-1">🛠️ ฝั่งผู้ดูแลร้าน (Admin / Shop Owner)</p>
-              <div class="flex flex-col gap-1 mt-2">
-                <p class="text-sm text-gray-300">Email: <span class="font-mono text-blue-300 select-all cursor-pointer bg-blue-900/30 px-1 rounded">admin@gmail.com</span></p>
-                <p class="text-sm text-gray-300">Password: <span class="font-mono text-blue-300 select-all cursor-pointer bg-blue-900/30 px-1 rounded">admin123</span></p>
-              </div>
-            </div>
-            
-            <!-- Customer Account -->
-            <div class="bg-[#15161e] p-4 rounded-lg border border-gray-600">
-              <p class="text-sm font-medium text-gray-400 mb-2 border-b border-gray-700 pb-1">🛍️ ฝั่งลูกค้า (Customer)</p>
-              <div class="flex flex-col gap-1 mt-2">
-                <p class="text-sm text-gray-300">Email: <span class="font-mono text-green-300 select-all cursor-pointer bg-green-900/30 px-1 rounded">test@gmail.com</span></p>
-                <p class="text-sm text-gray-300">Password: <span class="font-mono text-green-300 select-all cursor-pointer bg-green-900/30 px-1 rounded">test123</span></p>
-              </div>
-            </div>
-          </div>
-          <p class="text-xs text-gray-500 mt-4">* สามารถดับเบิลคลิกที่ Email หรือ Password เพื่อก๊อปปี้ไปวางในหน้าล็อกอินได้เลยค่ะ</p>
-        </div>
-        
       </div>
-</div>
-      
-      <a href="project-details.html" class="inline-block border-b border-blue-500 text-blue-400 hover:text-blue-300 cursor-pointer mb-6">Read More</a>
 
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <div class="overflow-hidden rounded-xl border border-gray-700 group cursor-pointer">
-          <img src="images/projWeb2.png" alt="ภาพหน้าเว็บแอปฯ 1" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" />
-        </div>
-        <div class="overflow-hidden rounded-xl border border-gray-700 group cursor-pointer">
-          <img src="images/projWeb1.png" alt="ภาพหน้าเว็บแอปฯ 2" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" />
-        </div>
-        <div class="overflow-hidden rounded-xl border border-gray-700 group cursor-pointer">
-          <img src="images/projWeb3.png" alt="ภาพหน้าเว็บแอปฯ 3" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" />
-        </div>
-        <div class="overflow-hidden rounded-xl border border-gray-700 group cursor-pointer">
-          <img src="images/projWeb4.png" alt="ภาพหน้าเว็บแอปฯ 4" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" />
-        </div>
-        <div class="overflow-hidden rounded-xl border border-gray-700 group cursor-pointer">
-          <img src="images/projWeb5.png" alt="ภาพหน้าเว็บแอปฯ 5" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" />
-        </div>
-        <div class="overflow-hidden rounded-xl border border-gray-700 group cursor-pointer">
-          <img src="images/projWeb6.png" alt="ภาพหน้าเว็บแอปฯ 6" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" />
+      <!-- Backend & Database -->
+      <div class="bg-[#131622]/90 backdrop-blur-sm p-6 rounded-2xl border border-gray-800/80 shadow-xl hover:border-purple-500/50 hover:shadow-[0_0_25px_rgba(168,85,247,0.15)] transition-all duration-300 group">
+        <h3 class="text-xl font-bold text-purple-400 mb-4 flex items-center gap-2 group-hover:scale-105 transition-transform">⚙️ Backend & DB</h3>
+        <ul class="text-gray-300 space-y-2 text-sm">
+          <li>• C# / .NET</li>
+          <li>• RESTful APIs</li>
+          <li>• Node.js</li>
+          <li>• LocalStorage Management</li>
+          <li>• SQL (Basic Concepts)</li>
+        </ul>
+      </div>
+
+      <!-- Languages & Tools -->
+      <div class="bg-[#131622]/90 backdrop-blur-sm p-6 rounded-2xl border border-gray-800/80 shadow-xl hover:border-green-500/50 hover:shadow-[0_0_25px_rgba(34,197,94,0.15)] transition-all duration-300 group">
+        <h3 class="text-xl font-bold text-green-400 mb-4 flex items-center gap-2 group-hover:scale-105 transition-transform">🛠️ Tools & Languages</h3>
+        <ul class="text-gray-300 space-y-2 text-sm">
+          <li>• Python, TypeScript</li>
+          <li>• Java, C++, C</li>
+          <li>• Git, GitHub</li>
+          <li>• Docker, WordPress</li>
+        </ul>
+      </div>
+
+      <!-- Concepts & Soft Skills -->
+      <div class="bg-[#131622]/90 backdrop-blur-sm p-6 rounded-2xl border border-gray-800/80 shadow-xl hover:border-pink-500/50 hover:shadow-[0_0_25px_rgba(236,72,153,0.15)] transition-all duration-300 group">
+        <h3 class="text-xl font-bold text-pink-400 mb-4 flex items-center gap-2 group-hover:scale-105 transition-transform">🧠 Soft Skills & Concepts</h3>
+        <ul class="text-gray-300 space-y-2 text-sm">
+          <li>• Responsive UI / CRUD Operations</li>
+          <li>• State Management</li>
+          <li>• Problem-solving & Teamwork</li>
+          <li>• Adaptability & Communication</li>
+          <li>• Accountability & Attention to detail</li>
+        </ul>
       </div>
     </div>
   </section>
+  
+  <!-- ================= PERSONAL PROJECTS SECTION ================= -->
+  <section id="projects-section" class="personal-projects max-w-6xl mx-auto px-4 mb-24 reveal relative z-10">
+    <!-- ⭐ FEATURED SENIOR PROJECT ⭐ -->
+<div class="mb-12 project-card bg-[#131622]/90 backdrop-blur-sm border border-yellow-500/40 text-white rounded-2xl shadow-[0_0_30px_rgba(234,179,8,0.15)] p-8 transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_15px_40px_rgba(234,179,8,0.25)] relative overflow-hidden">
+  
+  <!-- ป้าย Tag โดดเด่น -->
+  <div class="absolute top-0 right-0 bg-gradient-to-bl from-yellow-400 to-yellow-600 text-white font-bold px-6 py-2 rounded-bl-2xl shadow-lg tracking-wider text-sm">
+    🎓 SENIOR PROJECT
+  </div>
 
-  <section class="project max-w-6xl mx-auto px-4 mb-20 reveal">
-    <div class="flex items-center justify-center gap-4 mb-8">
-      <div class="h-px bg-gray-700 flex-1 max-w-[100px]"></div>
-      <h2 class="text-3xl font-bold tracking-wider">PERSONAL PROJECTS</h2>
-      <div class="h-px bg-gray-700 flex-1 max-w-[100px]"></div>
-    </div>
-
-    <div class="project-card bg-[#1e202c] border border-gray-800 text-white rounded-2xl shadow-xl p-8 transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_10px_30px_rgba(59,130,246,0.15)] hover:border-blue-500/30">
-      <h3 class="text-2xl font-bold mb-4 text-blue-400">Project 1: Automated YouTube Shorts Generator Tools: n8n</h3>
-      <h3 class="text-lg font-semibold mb-3 text-gray-300">รายละเอียดโปรเจกต์ :</h3>
-      
-      <div class="mb-6 text-gray-400">
-        <p class="mb-3">
-ออกแบบและพัฒนาระบบ Automation Workflow ผ่าน n8n เพื่อสร้างวิดีโอสั้นแบบอัตโนมัติ โดยระบบจะดึงคลิปวิดีโอจากแหล่ง Free Source, สั่งงาน AI ให้เขียนสคริปต์ (Prompt Engineering) และสร้างเสียงพากย์ (AI Voiceover) แบบอัตโนมัติ</p>
-      </div>
-
-      <h3 class="text-2xl font-bold mb-4 text-blue-400">Project 2: Persona-based AI Chatbot Tools: Dify</h3>
-      <h3 class="text-lg font-semibold mb-3 text-gray-300">รายละเอียดโปรเจกต์ :</h3>
-      
-      <div class="mb-6 text-gray-400">
-        <p class="mb-3">พัฒนา AI Chatbot ที่สวมบทบาทเป็นตัวละคร (Character AI) ผ่านแพลตฟอร์ม Dify โดยใช้เทคนิค Prompt Engineering ในการควบคุมบุคลิกภาพ</p>
-      </div>
-      
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <div class="overflow-hidden rounded-xl border border-gray-700 group cursor-pointer">
-          <img src="images/n8n.jpg" alt="ภาพหน้าเว็บแอปฯ 1" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" />
-        </div>
-        <div class="overflow-hidden rounded-xl border border-gray-700 group cursor-pointer">
-          <img src="images/dify.jpg" alt="ภาพหน้าเว็บแอปฯ 2" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" />
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="skills max-w-6xl mx-auto px-4 mb-20 reveal">
-    <div class="flex items-center justify-center gap-4 mb-8">
-      <div class="h-px bg-gray-700 flex-1 max-w-[100px]"></div>
-      <h2 class="text-3xl font-bold tracking-wider">SKILLS</h2>
-      <div class="h-px bg-gray-700 flex-1 max-w-[100px]"></div>
+  <h3 class="text-2xl md:text-3xl font-bold mb-2 text-transparent bg-clip-text bg-gradient-to-r from-yellow-300 to-yellow-500 mt-4 md:mt-0">
+    Online Store Web Application System For Grocery Shops
+  </h3>
+  <p class="text-xs text-yellow-400 mb-6 font-semibold uppercase tracking-wider">React.js, Node.js, Express.js, Firebase</p>
+  
+  <div class="mb-6 text-gray-300">
+    <p class="mb-4 text-base md:text-lg">แพลตฟอร์มอีคอมเมิร์ซแบบครบวงจรที่พัฒนาขึ้นเพื่อเพิ่มประสิทธิภาพการจัดการร้านขายของชำ ครอบคลุมตั้งแต่การจัดการบัญชีผู้ใช้ แคตตาล็อกสินค้า และการติดตามคำสั่งซื้อแบบเรียลไทม์</p>
+    
+    <div class="bg-gray-800/40 p-5 rounded-xl border border-gray-700/50 mb-6">
+      <ul class="list-disc pl-5 space-y-3 text-sm md:text-base">
+        <li><b class="text-blue-300">Front-end:</b> พัฒนาหน้าจอผู้ใช้ให้ตอบสนองได้ดีด้วย React.js (รองรับการทำ System Integration ในอนาคต)</li>
+        <li><b class="text-purple-300">Back-end &amp; Database:</b> สร้างระบบหลังบ้านด้วย Node.js/Express.js และออกแบบโครงสร้างฐานข้อมูล (ใช้งานร่วมกับ Firebase)</li>
+        <li><b class="text-green-300">Testing &amp; Debugging:</b> รับผิดชอบการตรวจสอบหาบั๊ก (Debug) และทำ UAT (User Acceptance Testing) ในระดับเบื้องต้นเพื่อให้ระบบทำงานได้อย่างเสถียร</li>
+        <li><b class="text-pink-300">Deployment:</b> ติดตั้งและบริหารจัดการแอปพลิเคชันบน Firebase โดยใช้ Firebase Hosting เพื่อการส่งข้อมูลที่รวดเร็ว เสถียร และรองรับการเข้าถึงจากทุกที่</li>
+      </ul>
     </div>
     
-    <h3 class="text-xl font-bold mb-4 text-gray-400">Soft Skills</h3>
-    <div class="flex flex-wrap gap-3 mb-8">
-      <span class="bg-gray-800 border border-gray-700 px-5 py-2 rounded-full hover:bg-gray-700 hover:scale-105 cursor-default transition-all shadow-sm">Communication</span>
-      <span class="bg-gray-800 border border-gray-700 px-5 py-2 rounded-full hover:bg-gray-700 hover:scale-105 cursor-default transition-all shadow-sm">Teamwork</span>
-      <span class="bg-gray-800 border border-gray-700 px-5 py-2 rounded-full hover:bg-gray-700 hover:scale-105 cursor-default transition-all shadow-sm">Problem Solving</span>
-      <span class="bg-gray-800 border border-gray-700 px-5 py-2 rounded-full hover:bg-gray-700 hover:scale-105 cursor-default transition-all shadow-sm">Adaptability</span>
-      <span class="bg-gray-800 border border-gray-700 px-5 py-2 rounded-full hover:bg-gray-700 hover:scale-105 cursor-default transition-all shadow-sm">Accountability</span>
+    <!-- Live Demo & Test Accounts -->
+    <div class="bg-[#1a1d2d]/80 p-6 rounded-xl border border-gray-700 shadow-inner">
+      <h4 class="text-lg font-semibold text-white flex items-center gap-2 mb-3">
+        <span class="text-yellow-400">🚀</span> Live Demo &amp; Test Accounts
+      </h4>
+      <p class="text-gray-300 text-sm md:text-base mb-4">
+        สามารถเข้าไปทดลองใช้งานระบบจริงได้ที่: <br>
+        <a href="https://groceryshopweb.web.app/" target="_blank" class="text-yellow-400 hover:text-yellow-300 underline font-medium break-all">https://groceryshopweb.web.app/</a>
+      </p>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <!-- Admin Account -->
+        <div class="bg-[#0b0c10] p-4 rounded-lg border border-gray-700 hover:border-blue-500/50 transition-colors">
+          <p class="text-sm font-medium text-gray-400 mb-2 border-b border-gray-800 pb-2">🛠️ ฝั่งผู้ดูแลร้าน (Admin)</p>
+          <div class="flex flex-col gap-2 mt-3">
+            <p class="text-sm text-gray-300 flex justify-between items-center">Email: <span class="font-mono text-blue-400 select-all cursor-pointer bg-blue-900/20 px-2 py-1 rounded">admin@gmail.com</span></p>
+            <p class="text-sm text-gray-300 flex justify-between items-center">Password: <span class="font-mono text-blue-400 select-all cursor-pointer bg-blue-900/20 px-2 py-1 rounded">admin123</span></p>
+          </div>
+        </div>
+        
+        <!-- Customer Account -->
+        <div class="bg-[#0b0c10] p-4 rounded-lg border border-gray-700 hover:border-green-500/50 transition-colors">
+          <p class="text-sm font-medium text-gray-400 mb-2 border-b border-gray-800 pb-2">🛍️ ฝั่งลูกค้า (Customer)</p>
+          <div class="flex flex-col gap-2 mt-3">
+            <p class="text-sm text-gray-300 flex justify-between items-center">Email: <span class="font-mono text-green-400 select-all cursor-pointer bg-green-900/20 px-2 py-1 rounded">test@gmail.com</span></p>
+            <p class="text-sm text-gray-300 flex justify-between items-center">Password: <span class="font-mono text-green-400 select-all cursor-pointer bg-green-900/20 px-2 py-1 rounded">test123</span></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <a href="project-details.html" class="inline-block border-b border-yellow-500 text-yellow-400 hover:text-yellow-300 cursor-pointer mb-6 transition-colors">Read More details ❯</a>
+
+  <!-- Image Grid -->
+  <div class="grid grid-cols-2 lg:grid-cols-3 gap-4">
+    <div class="overflow-hidden rounded-xl border border-gray-700 group cursor-pointer aspect-video bg-gray-900">
+      <img src="images/projWeb2.png" alt="ภาพหน้าเว็บแอปฯ 1" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+    </div>
+    <div class="overflow-hidden rounded-xl border border-gray-700 group cursor-pointer aspect-video bg-gray-900">
+      <img src="images/projWeb1.png" alt="ภาพหน้าเว็บแอปฯ 2" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+    </div>
+    <div class="overflow-hidden rounded-xl border border-gray-700 group cursor-pointer aspect-video bg-gray-900">
+      <img src="images/projWeb3.png" alt="ภาพหน้าเว็บแอปฯ 3" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+    </div>
+    <div class="overflow-hidden rounded-xl border border-gray-700 group cursor-pointer aspect-video bg-gray-900">
+      <img src="images/projWeb4.png" alt="ภาพหน้าเว็บแอปฯ 4" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+    </div>
+    <div class="overflow-hidden rounded-xl border border-gray-700 group cursor-pointer aspect-video bg-gray-900">
+      <img src="images/projWeb5.png" alt="ภาพหน้าเว็บแอปฯ 5" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+    </div>
+    <div class="overflow-hidden rounded-xl border border-gray-700 group cursor-pointer aspect-video bg-gray-900">
+      <img src="images/projWeb6.png" alt="ภาพหน้าเว็บแอปฯ 6" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+    </div>
+  </div>
+</div>
+<!-- ⭐ END FEATURED SENIOR PROJECT ⭐ -->
+    
+    <div class="flex items-center justify-center gap-4 mb-12">
+      <div class="h-px bg-gradient-to-r from-transparent to-gray-700 flex-1 max-w-[150px]"></div>
+      <h2 class="text-2xl md:text-3xl font-extrabold tracking-wider text-white text-center">PERSONAL PROJECTS</h2>
+      <div class="h-px bg-gradient-to-l from-transparent to-gray-700 flex-1 max-w-[150px]"></div>
     </div>
 
-    <h3 class="text-xl font-bold mb-4 text-blue-400">Hard Skills & Tech Stack</h3>
-    <div class="flex flex-wrap gap-3 mb-8">
-      <span class="bg-blue-900/50 text-blue-300 border border-blue-500/30 px-5 py-2 rounded-full hover:bg-blue-600 hover:text-white hover:scale-105 transition-all shadow-sm cursor-default font-bold tracking-wide">React</span>
-      <span class="bg-green-900/50 text-green-300 border border-green-500/30 px-5 py-2 rounded-full hover:bg-green-600 hover:text-white hover:scale-105 transition-all shadow-sm cursor-default font-bold tracking-wide">Node.js / Express.js</span>
-      <span class="bg-yellow-900/50 text-yellow-300 border border-yellow-500/30 px-5 py-2 rounded-full hover:bg-yellow-600 hover:text-white hover:scale-105 transition-all shadow-sm cursor-default font-bold tracking-wide">JavaScript</span>
-      <span class="bg-sky-900/50 text-sky-300 border border-sky-500/30 px-5 py-2 rounded-full hover:bg-sky-500 hover:text-white hover:scale-105 transition-all shadow-sm cursor-default font-bold tracking-wide">Docker</span>
-      <!-- <span class="bg-orange-900/50 text-orange-300 border border-orange-500/30 px-5 py-2 rounded-full hover:bg-orange-500 hover:text-white hover:scale-105 transition-all shadow-sm cursor-default">Firebase (NoSQL)</span>
-      <span class="bg-blue-900/50 text-blue-300 border border-blue-500/30 px-5 py-2 rounded-full hover:bg-blue-500 hover:text-white hover:scale-105 transition-all shadow-sm cursor-default">MySQL</span> -->
-      <span class="bg-gray-800 border border-gray-700 px-5 py-2 rounded-full hover:bg-gray-700 hover:scale-105 transition-all shadow-sm cursor-default font-bold tracking-wide">Git / GitHub</span>
-      <span class="bg-gray-800 border border-gray-700 px-5 py-2 rounded-full hover:bg-gray-700 hover:scale-105 transition-all shadow-sm cursor-default font-bold tracking-wide">HTML / CSS / Tailwind / Bootstrap</span>
-      <span class="bg-gray-800 border border-gray-700 px-5 py-2 rounded-full hover:bg-gray-700 hover:scale-105 transition-all shadow-sm cursor-default font-bold tracking-wide">Python / Java / C++ / C</span>
-    </div>
+    <!-- สังเกตการเพิ่มลูกเล่นโฮเวอร์การ์ดเรืองแสงเงาฟุ้ง (Shadow Glowing) -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+      
+      <!-- 1. CNX-FlexWork -->
+      <div class="bg-[#131622]/90 backdrop-blur-sm rounded-2xl border border-gray-800 overflow-hidden shadow-xl flex flex-col justify-between hover:scale-[1.02] hover:border-purple-500/40 hover:shadow-[0_0_30px_rgba(147,51,234,0.2)] transition-all duration-300">
+        <div class="relative w-full overflow-hidden aspect-video bg-gray-950">
+          <div id="slider-flex" class="flex transition-transform duration-500 ease-in-out h-full w-full">
+            <img src="images/flex.png" class="w-full h-full object-cover flex-shrink-0" alt="FlexWork 1" />
+            <img src="images/flex2.png" class="w-full h-full object-cover flex-shrink-0" alt="FlexWork 2" />
+            <img src="images/flex3.png" class="w-full h-full object-cover flex-shrink-0" alt="FlexWork 3" />
+            <img src="images/flex4.png" class="w-full h-full object-cover flex-shrink-0" alt="FlexWork 4" />
+            <img src="images/flex5.png" class="w-full h-full object-cover flex-shrink-0" alt="FlexWork 5" />
+          </div>
+          <button onclick="moveSlider('flex', -1)" class="absolute left-2 top-1/2 -translate-y-1/2 bg-black/60 hover:bg-black text-white p-2 w-9 h-9 rounded-full z-10 flex items-center justify-center font-bold">❮</button>
+          <button onclick="moveSlider('flex', 1)" class="absolute right-2 top-1/2 -translate-y-1/2 bg-black/60 hover:bg-black text-white p-2 w-9 h-9 rounded-full z-10 flex items-center justify-center font-bold">❯</button>
+        </div>
+        <div class="p-6">
+          <h3 class="text-xl font-bold text-white mb-2">CNX-FlexWork | WordPress Part-Time Job Portal Prototype</h3>
+          <p class="text-xs text-purple-400 mb-3 font-semibold uppercase tracking-wider">WordPress, CMS Architecture, UI/UX Design</p>
+          <p class="text-sm text-gray-400 leading-relaxed">ออกแบบและพัฒนา High-fidelity Frontend Visual Prototype แพลตฟอร์มหางานพาร์ทไทม์ มุ่งเน้นไปที่ประสบการณ์ผู้ใช้งานกลุ่มคนหางานทั่วไป เพื่อการทดสอบผลิตภัณฑ์ที่รวดเร็วและรองรับ Responsive เต็มระบบ</p>
+        </div>
+      </div>
 
-    <h3 class="text-xl font-bold mb-4 text-emerald-400">Database & Data Management</h3>
-    <div class="flex flex-wrap gap-3 mb-8">
-      <span class="bg-emerald-900/50 text-emerald-300 border border-emerald-500/50 px-5 py-2 rounded-full hover:bg-emerald-600 hover:text-white hover:scale-105 transition-all cursor-default font-bold tracking-wide">SQL</span>
-      <span class="bg-emerald-900/50 text-emerald-300 border border-emerald-500/30 px-5 py-2 rounded-full hover:bg-emerald-600 hover:text-white hover:scale-105 transition-all cursor-default font-bold tracking-wide">Firebase (NoSQL)</span>
-    </div>
+      <!-- 2. Gin Rai Dee -->
+      <div class="bg-[#131622]/90 backdrop-blur-sm rounded-2xl border border-gray-800 overflow-hidden shadow-xl flex flex-col justify-between hover:scale-[1.02] hover:border-blue-500/40 hover:shadow-[0_0_30px_rgba(59,130,246,0.2)] transition-all duration-300">
+        <div class="relative w-full overflow-hidden aspect-video bg-gray-950">
+          <div id="slider-gin" class="flex transition-transform duration-500 ease-in-out h-full w-full">
+            <img src="images/gin.png" class="w-full h-full object-cover flex-shrink-0" alt="Gin Rai Dee 1" />
+            <img src="images/gin2.png" class="w-full h-full object-cover flex-shrink-0" alt="Gin Rai Dee 2" />
+          </div>
+          <button onclick="moveSlider('gin', -1)" class="absolute left-2 top-1/2 -translate-y-1/2 bg-black/60 hover:bg-black text-white p-2 w-9 h-9 rounded-full z-10 flex items-center justify-center font-bold">❮</button>
+          <button onclick="moveSlider('gin', 1)" class="absolute right-2 top-1/2 -translate-y-1/2 bg-black/60 hover:bg-black text-white p-2 w-9 h-9 rounded-full z-10 flex items-center justify-center font-bold">❯</button>
+        </div>
+        <div class="p-6">
+          <h3 class="text-xl font-bold text-white mb-2">Gin Rai Dee | Food Random Web Application</h3>
+          <p class="text-xs text-purple-400 mb-3 font-semibold uppercase tracking-wider">React / JavaScript, Tailwind CSS, Git</p>
+          <p class="text-sm text-gray-400 leading-relaxed">เว็บแอปพลิเคชันแก้ไขปัญหาการเลือกเมนูอาหารประจำวันแบบ Interactive มีระบบกรองแยกประเภทอัจฉริยะ (เช่น ก๋วยเตี๋ยว, ข้าว) พร้อมแสดงรายละเอียด แคลอรี และช่วงราคาอย่างแม่นยำ</p>
+        </div>
+      </div>
 
-    <h3 class="text-xl font-bold mb-4 text-purple-400">AI for Development & Productivity</h3>
-    <div class="flex flex-wrap gap-3">
-      <span class="bg-purple-900/40 text-purple-300 border border-purple-500/30 px-5 py-2 rounded-full hover:bg-purple-600 hover:text-white hover:shadow-[0_0_15px_rgba(168,85,247,0.5)] hover:scale-105 transition-all cursor-default">Microsoft Copilot</span>
-      <span class="bg-purple-900/40 text-purple-300 border border-purple-500/30 px-5 py-2 rounded-full hover:bg-purple-600 hover:text-white hover:shadow-[0_0_15px_rgba(168,85,247,0.5)] hover:scale-105 transition-all cursor-default">ChatGPT</span>
-      <span class="bg-purple-900/40 text-purple-300 border border-purple-500/30 px-5 py-2 rounded-full hover:bg-purple-600 hover:text-white hover:shadow-[0_0_15px_rgba(168,85,247,0.5)] hover:scale-105 transition-all cursor-default">Google Gemini</span>
-      <span class="bg-purple-900/40 text-purple-300 border border-purple-500/30 px-5 py-2 rounded-full hover:bg-purple-600 hover:text-white hover:shadow-[0_0_15px_rgba(168,85,247,0.5)] hover:scale-105 transition-all cursor-default">Claude</span>
-      <span class="bg-purple-900/40 text-purple-300 border border-purple-500/30 px-5 py-2 rounded-full hover:bg-purple-600 hover:text-white hover:shadow-[0_0_15px_rgba(168,85,247,0.5)] hover:scale-105 transition-all cursor-default">DeepSeek</span>
-      <span class="bg-purple-900/40 text-purple-300 border border-purple-500/30 px-5 py-2 rounded-full hover:bg-purple-600 hover:text-white hover:shadow-[0_0_15px_rgba(168,85,247,0.5)] hover:scale-105 transition-all cursor-default">Perplexity</span>
-      <span class="bg-purple-900/40 text-purple-300 border border-purple-500/30 px-5 py-2 rounded-full hover:bg-purple-600 hover:text-white hover:shadow-[0_0_15px_rgba(168,85,247,0.5)] hover:scale-105 transition-all cursor-default">Ollama</span>
+      <!-- 3. CNX-JobHub -->
+      <div class="bg-[#131622]/90 backdrop-blur-sm rounded-2xl border border-gray-800 overflow-hidden shadow-xl flex flex-col justify-between hover:scale-[1.02] hover:border-pink-500/40 hover:shadow-[0_0_30px_rgba(236,72,153,0.2)] transition-all duration-300">
+        <div class="relative w-full overflow-hidden aspect-video bg-gray-950">
+          <div id="slider-job" class="flex transition-transform duration-500 ease-in-out h-full w-full">
+            <img src="images/job.png" class="w-full h-full object-cover flex-shrink-0" alt="JobHub 1" />
+            <img src="images/job2.png" class="w-full h-full object-cover flex-shrink-0" alt="JobHub 2" />
+          </div>
+          <button onclick="moveSlider('job', -1)" class="absolute left-2 top-1/2 -translate-y-1/2 bg-black/60 hover:bg-black text-white p-2 w-9 h-9 rounded-full z-10 flex items-center justify-center font-bold">❮</button>
+          <button onclick="moveSlider('job', 1)" class="absolute right-2 top-1/2 -translate-y-1/2 bg-black/60 hover:bg-black text-white p-2 w-9 h-9 rounded-full z-10 flex items-center justify-center font-bold">❯</button>
+        </div>
+        <div class="p-6">
+          <h3 class="text-xl font-bold text-white mb-2">CNX-JobHub | Premier IT Job Board Platform</h3>
+          <p class="text-xs text-purple-400 mb-3 font-semibold uppercase tracking-wider">Next.js, TypeScript, Tailwind CSS, LocalStorage</p>
+          <p class="text-sm text-gray-400 leading-relaxed">บอร์ดประกาศหางานไอทีสำหรับชุมชนนักพัฒนาเชียงใหม่ ควบคุมระบบ State Management และการจัดการฐานข้อมูลฝั่ง Client-side แบบครบถ้วน (CRUD Operations) ผ่าน LocalStorage โดยไม่มีการรีโหลดหน้า</p>
+        </div>
+      </div>
+
+      <!-- 4. Chiang Mai Cafe POS -->
+      <div class="bg-[#131622]/90 backdrop-blur-sm rounded-2xl border border-gray-800 overflow-hidden shadow-xl flex flex-col justify-between hover:scale-[1.02] hover:border-green-500/40 hover:shadow-[0_0_30px_rgba(34,197,94,0.2)] transition-all duration-300">
+        <div class="relative w-full overflow-hidden aspect-video bg-gray-950">
+          <div id="slider-pos" class="flex transition-transform duration-500 ease-in-out h-full w-full">
+            <img src="images/pos.png" class="w-full h-full object-cover flex-shrink-0" alt="POS 1" />
+            <img src="images/pos2.png" class="w-full h-full object-cover flex-shrink-0" alt="POS 2" />
+          </div>
+          <button onclick="moveSlider('pos', -1)" class="absolute left-2 top-1/2 -translate-y-1/2 bg-black/60 hover:bg-black text-white p-2 w-9 h-9 rounded-full z-10 flex items-center justify-center font-bold">❮</button>
+          <button onclick="moveSlider('pos', 1)" class="absolute right-2 top-1/2 -translate-y-1/2 bg-black/60 hover:bg-black text-white p-2 w-9 h-9 rounded-full z-10 flex items-center justify-center font-bold">❯</button>
+        </div>
+        <div class="p-6">
+          <h3 class="text-xl font-bold text-white mb-2">Chiang Mai Cafe POS | Point of Sale System</h3>
+          <p class="text-xs text-purple-400 mb-3 font-semibold uppercase tracking-wider">Next.js, TypeScript, Tailwind CSS</p>
+          <p class="text-sm text-gray-400 leading-relaxed">แอปพลิเคชันหน้าเดี่ยว (SPA) สำหรับบริหารจัดการออเดอร์ในร้านกาแฟ พัฒนาระบบตรรกะคำนวณข้อมูลที่ซับซ้อน เช่น การจัดการตะกร้าสินค้า อัปเดตปริมาณสินค้า และคำนวณราคารวม ภาษี VAT ไดนามิก</p>
+        </div>
+      </div>
+
+      <!-- 5. Smart Office Inventory -->
+      <div class="bg-[#131622]/90 backdrop-blur-sm rounded-2xl border border-gray-800 overflow-hidden shadow-xl flex flex-col justify-between hover:scale-[1.02] hover:border-yellow-500/40 hover:shadow-[0_0_30px_rgba(234,179,8,0.2)] transition-all duration-300">
+        <div class="relative w-full overflow-hidden aspect-video bg-gray-950">
+          <div id="slider-sm" class="flex transition-transform duration-500 ease-in-out h-full w-full">
+            <img src="images/sm.png" class="w-full h-full object-cover flex-shrink-0" alt="Inventory 1" />
+            <img src="images/sm2.png" class="w-full h-full object-cover flex-shrink-0" alt="Inventory 2" />
+          </div>
+          <button onclick="moveSlider('sm', -1)" class="absolute left-2 top-1/2 -translate-y-1/2 bg-black/60 hover:bg-black text-white p-2 w-9 h-9 rounded-full z-10 flex items-center justify-center font-bold">❮</button>
+          <button onclick="moveSlider('sm', 1)" class="absolute right-2 top-1/2 -translate-y-1/2 bg-black/60 hover:bg-black text-white p-2 w-9 h-9 rounded-full z-10 flex items-center justify-center font-bold">❯</button>
+        </div>
+        <div class="p-6">
+          <h3 class="text-xl font-bold text-white mb-2">Smart Office Inventory | Asset Management Dashboard</h3>
+          <p class="text-xs text-purple-400 mb-3 font-semibold uppercase tracking-wider">Vue 3, Tailwind CSS v4, Vite</p>
+          <p class="text-sm text-gray-400 leading-relaxed">แดชบอร์ดตรวจสอบพัสดุและครุภัณฑ์อัจฉริยะ ประยุกต์ใช้ Vue 3 Reactivity ในการประมวลผลเมทริกซ์และสรุปยอดมูลค่าสินทรัพย์รวมทั้งหมด พร้อมระบบค้นหาเชิงลึกและการแจ้งเตือนคลังสินค้าต่ำ</p>
+        </div>
+      </div>
+
+      <!-- 6. CNX-Space -->
+      <div class="bg-[#131622]/90 backdrop-blur-sm rounded-2xl border border-gray-800 overflow-hidden shadow-xl flex flex-col justify-between hover:scale-[1.02] hover:border-cyan-500/40 hover:shadow-[0_0_30px_rgba(6,182,212,0.2)] transition-all duration-300">
+        <div class="w-full aspect-video bg-gradient-to-br from-gray-950 to-slate-900 flex flex-col items-center justify-center border-b border-gray-800 p-6 text-center">
+          <div class="text-green-400 font-mono text-xs md:text-sm bg-black/50 p-4 rounded-xl shadow-inner text-left space-y-1 border border-gray-800">
+            <p><span class="text-yellow-400">[GET]</span> /api/v1/spaces</p>
+            <p><span class="text-blue-400">[POST]</span> /api/v1/auth/login</p>
+            <p><span class="text-red-400">[DELETE]</span> /api/v1/admin/assets/4</p>
+          </div>
+        </div>
+        <div class="p-6">
+          <h3 class="text-xl font-bold text-white mb-2">CNX-Space | Backend API Architecture</h3>
+          <p class="text-xs text-purple-400 mb-3 font-semibold uppercase tracking-wider">C#, .NET 8, Web API</p>
+          <p class="text-sm text-gray-400 leading-relaxed">สถาปัตยกรรมระบบ API Backend เพื่อเรียนรู้การประมวลผลฝั่ง Server-side ออกแบบสถาปัตยกรรมตามหลัก OOP และนำแนวคิด Dependency Injection เข้ามาใช้ในการควบคุม Code Modularity</p>
+        </div>
+      </div>
+
     </div>
   </section>
 
-  <section class="certificates max-w-6xl mx-auto px-4 mb-20 reveal">
+  <!-- ================= CERTIFICATES SECTION ================= -->
+  <section id="certs-section" class="certificates max-w-6xl mx-auto px-4 mb-24 reveal relative z-10">
     <div class="flex items-center justify-center gap-4 mb-8">
-      <div class="h-px bg-gray-700 flex-1 max-w-[100px]"></div>
-      <h2 class="text-3xl font-bold tracking-wider">CERTIFICATES</h2>
-      <div class="h-px bg-gray-700 flex-1 max-w-[100px]"></div>
+      <div class="h-px bg-gradient-to-r from-transparent to-gray-700 flex-1 max-w-[150px]"></div>
+      <h2 class="text-2xl md:text-3xl font-extrabold tracking-wider text-white text-center">CERTIFICATES</h2>
+      <div class="h-px bg-gradient-to-l from-transparent to-gray-700 flex-1 max-w-[150px]"></div>
     </div>
 
-    <div class="relative w-full max-w-5xl mx-auto overflow-hidden bg-[#1e202c] rounded-2xl border border-gray-800 shadow-xl">
+    <div class="relative w-full max-w-5xl mx-auto overflow-hidden bg-[#131622]/90 backdrop-blur-sm rounded-2xl border border-gray-800 shadow-xl">
       <div id="certificateSlider" class="flex transition-transform duration-700 ease-in-out">
         
         <div class="w-full flex-shrink-0 px-4 md:px-12 py-6">
-          <div class="bg-gray-800 rounded-xl shadow-md p-4 flex flex-col md:flex-row items-center gap-4 min-h-[280px]">
-            <img src="images/TESA.jpg" class="w-full md:w-1/2 rounded-md shadow-md" />
-            <div class="text-center md:text-left">
-              <h3 class="text-lg font-semibold text-white mb-2">TESA Top Gun Rally 2023 (19-25 พฤศจิกายน 2023) - ณ มหาวิทยาลัยอุบลราชธานี</h3>
-              <p class="text-sm text-gray-400 mb-4">
-              เข้าร่วมการแข่งขันพัฒนาโซลูชันสำหรับระบบสมองกลฝังตัว (Embedded Systems) เพื่อการบริหารจัดการสถานการณ์น้ำในบริบทการใช้งานจริง ภายใต้โจทย์ “ระบบการจัดการน้ำท่วม-น้ำแล้งอัจฉริยะ” (Smart Flood-Drought Management System) โดยรับผิดชอบหลักในส่วนของการบูรณาการฮาร์ดแวร์ (Hardware Integration) และการนำโมเดล AIoT ไปใช้งานจริง (AIoT Model Deployment)</p>
-              <a href="TESA-details.html" class="inline-block border-b border-blue-500 text-blue-400 hover:text-blue-300 cursor-pointer">Read More</a>
-            </div>
-          </div>
-        </div>
-
-        <div class="w-full flex-shrink-0 px-4 md:px-12 py-6">
-          <div class="bg-gray-800 rounded-xl shadow-md p-4 flex flex-col md:flex-row items-center gap-4 min-h-[280px]">
-            <img src="images/cer0.jpg" class="w-full md:w-1/2 rounded-md shadow-md" />
-            <div class="text-center md:text-left">
-              <h3 class="text-lg font-semibold text-white mb-2">Basics Of Data Science</h3>
-              <p class="text-sm text-gray-400">เรียนรู้เรื่อง วิทยาการข้อมูลระดับพื้นฐาน(Basics of Data Science) By คณะICT มหาวิทยาลัยพะเยา และสนับสนุนโดยสถาบันข้อมูลขนาดใหญ่(องค์การมหาชน)หรือ Big Data Institute(Public Organization)</p>
-            </div>
-          </div>
-        </div>
-
-        <div class="w-full flex-shrink-0 px-4 md:px-12 py-6">
-          <div class="bg-gray-800 rounded-xl shadow-md p-4 flex flex-col md:flex-row items-center gap-4 min-h-[280px]">
-            <img src="images/cer1.jpg" class="w-full md:w-1/2 rounded-md shadow-md" />
-            <div class="text-center md:text-left">
-              <h3 class="text-lg font-semibold text-white mb-2">Phayao Learning City</h3>
-              <p class="text-sm text-gray-400">มหาวิทยาลัยพะเยา</p>
-            </div>
-          </div>
-        </div>
-
-        <div class="w-full flex-shrink-0 px-4 md:px-12 py-6">
-          <div class="bg-gray-800 rounded-xl shadow-md p-4 flex flex-col md:flex-row items-center gap-4 min-h-[280px]">
-            <img src="images/cer2.jpg" class="w-full md:w-1/2 rounded-md shadow-md" />
-            <div class="text-center md:text-left">
-              <h3 class="text-lg font-semibold text-white mb-2">สื่อประชาสัมพันธ์เพื่อธุรกิจชุมชน</h3>
-              <p class="text-sm text-gray-400">มหาวิทยาลัยพะเยา</p>
-            </div>
-          </div>
-        </div>
-
-        <div class="w-full flex-shrink-0 px-4 md:px-12 py-6">
-          <div class="bg-gray-800 rounded-xl shadow-md p-4 flex flex-col md:flex-row items-center gap-4 min-h-[280px]">
-            <img src="images/cerjava.jpg" class="w-full md:w-1/2 rounded-md shadow-md" />
-            <div class="text-center md:text-left">
-              <h3 class="text-lg font-semibold text-white mb-2">Java Programming Fundamentals</h3>
-              <p class="text-sm text-gray-400">การเขียนโปรแกรมคอมพิวเตอร์พื้นฐานด้วยจาวา By มหาวิทยาลัยบูรพา(BUU) MOOC</p>
-            </div>
-          </div>
-        </div>
-
-        <div class="w-full flex-shrink-0 px-4 md:px-12 py-6">
-          <div class="bg-gray-800 rounded-xl shadow-md p-4 flex flex-col md:flex-row items-center gap-4 min-h-[280px]">
+          <div class="bg-gray-800/50 rounded-xl shadow-md p-4 flex flex-col md:flex-row items-center gap-4 min-h-[280px]">
             <img src="images/pic1.jpg" class="w-full md:w-1/2 rounded-md shadow-md" />
             <div class="text-center md:text-left">
               <h3 class="text-lg font-semibold text-white mb-2">Omada GPON FTTR Solution</h3>
@@ -380,7 +349,7 @@
         </div>
 
         <div class="w-full flex-shrink-0 px-4 md:px-12 py-6">
-          <div class="bg-gray-800 rounded-xl shadow-md p-4 flex flex-col md:flex-row items-center gap-4 min-h-[280px]">
+          <div class="bg-gray-800/50 rounded-xl shadow-md p-4 flex flex-col md:flex-row items-center gap-4 min-h-[280px]">
             <img src="images/pic2.jpg" class="w-full md:w-1/2 rounded-md shadow-md" />
             <div class="text-center md:text-left">
               <h3 class="text-lg font-semibold text-white mb-2">TP-Link Omada Network 6.0</h3>
@@ -390,7 +359,7 @@
         </div>
 
         <div class="w-full flex-shrink-0 px-4 md:px-12 py-6">
-          <div class="bg-gray-800 rounded-xl shadow-md p-4 flex flex-col md:flex-row items-center gap-4 min-h-[280px]">
+          <div class="bg-gray-800/50 rounded-xl shadow-md p-4 flex flex-col md:flex-row items-center gap-4 min-h-[280px]">
             <img src="images/pic3.jpg" class="w-full md:w-1/2 rounded-md shadow-md" />
             <div class="text-center md:text-left">
               <h3 class="text-lg font-semibold text-white mb-2">PowerBI For Beginners</h3>
@@ -400,7 +369,7 @@
         </div>
 
         <div class="w-full flex-shrink-0 px-4 md:px-12 py-6">
-          <div class="bg-gray-800 rounded-xl shadow-md p-4 flex flex-col md:flex-row items-center gap-4 min-h-[280px]">
+          <div class="bg-gray-800/50 rounded-xl shadow-md p-4 flex flex-col md:flex-row items-center gap-4 min-h-[280px]">
             <img src="images/pic4.jpg" class="w-full md:w-1/2 rounded-md shadow-md" />
             <div class="text-center md:text-left">
               <h3 class="text-lg font-semibold text-white mb-2">THAI MOOC</h3>
@@ -411,72 +380,73 @@
 
       </div>
 
-      <button onclick="prevCert()" class="absolute left-2 top-1/2 -translate-y-1/2 bg-gray-900/50 hover:bg-gray-900 text-white p-3 rounded-full shadow transition z-10">
-        <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <button onclick="prevCert()" class="absolute left-2 top-1/2 -translate-y-1/2 bg-gray-950/60 hover:bg-gray-950 text-white p-3 rounded-full shadow transition z-10">
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
         </svg>
       </button>
 
-      <button onclick="nextCert()" class="absolute right-2 top-1/2 -translate-y-1/2 bg-gray-900/50 hover:bg-gray-900 text-white p-3 rounded-full shadow transition z-10">
-        <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <button onclick="nextCert()" class="absolute right-2 top-1/2 -translate-y-1/2 bg-gray-950/60 hover:bg-gray-950 text-white p-3 rounded-full shadow transition z-10">
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
         </svg>
       </button>
     </div>
   </section>
 
-  <section class="activities max-w-6xl mx-auto px-4 mb-20 reveal">
+  <!-- ================= ACTIVITIES SECTION ================= -->
+  <section class="activities max-w-6xl mx-auto px-4 mb-24 reveal relative z-10">
     <div class="flex items-center justify-center gap-4 mb-8">
-      <div class="h-px bg-gray-700 flex-1 max-w-[100px]"></div>
-      <h2 class="text-3xl font-bold tracking-wider">ACTIVITIES</h2>
-      <div class="h-px bg-gray-700 flex-1 max-w-[100px]"></div>
+      <div class="h-px bg-gradient-to-r from-transparent to-gray-700 flex-1 max-w-[150px]"></div>
+      <h2 class="text-2xl md:text-3xl font-extrabold tracking-wider text-white text-center">ACTIVITIES</h2>
+      <div class="h-px bg-gradient-to-l from-transparent to-gray-700 flex-1 max-w-[150px]"></div>
     </div>
 
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 justify-center">
 
-      <div class="bg-[#1e202c] p-4 rounded-xl shadow-lg border border-gray-800 hover:-translate-y-2 transition-transform duration-300">
+      <div class="bg-[#131622]/90 backdrop-blur-sm p-4 rounded-xl shadow-lg border border-gray-800 hover:-translate-y-2 hover:border-purple-500/30 transition-all duration-300">
         <a href="https://ict.up.ac.th/newsict/detail/1426" target="_blank" rel="noopener noreferrer">
           <img src="https://ict.up.ac.th//upload/news/album/pic-202330111701324126_53562_40.jpg" alt="Activity 1" class="w-full h-48 object-cover rounded-lg mb-4" />
           <p class="text-base text-center text-blue-400 hover:text-blue-300 transition">เข้าร่วมแข่งขัน TESA Top Gun Rally 2023</p>
         </a>
       </div>
 
-      <div class="bg-[#1e202c] p-4 rounded-xl shadow-lg border border-gray-800 hover:-translate-y-2 transition-transform duration-300">
+      <div class="bg-[#131622]/90 backdrop-blur-sm p-4 rounded-xl shadow-lg border border-gray-800 hover:-translate-y-2 hover:border-purple-500/30 transition-all duration-300">
         <a href="https://ict.up.ac.th/newsict/detail/1474" target="_blank" rel="noopener noreferrer">
           <img src="https://ict.up.ac.th//upload/news/real/pic-202422011705896216_78486_44-8480.jpg" alt="Activity 2" class="w-full h-48 object-cover rounded-lg mb-4" />
           <p class="text-base text-center text-blue-400 hover:text-blue-300 transition">อบรมเชิงปฏิบัติการ หัวข้อ “flutter”</p>
         </a>
       </div>
 
-      <div class="bg-[#1e202c] p-4 rounded-xl shadow-lg border border-gray-800 hover:-translate-y-2 transition-transform duration-300">
+      <div class="bg-[#131622]/90 backdrop-blur-sm p-4 rounded-xl shadow-lg border border-gray-800 hover:-translate-y-2 hover:border-purple-500/30 transition-all duration-300">
         <a href="https://ict.up.ac.th/newsict/detail/1545" target="_blank" rel="noopener noreferrer">
           <img src="https://ict.up.ac.th//upload/news/album/pic-202410071720600017_60806_44.jpg" alt="Activity 3" class="w-full h-48 object-cover rounded-lg mb-4" />
           <p class="text-base text-center text-blue-400 hover:text-blue-300 transition">Northern Job Fair 2024</p>
         </a>
       </div>
 
-      <div class="bg-[#1e202c] p-4 rounded-xl shadow-lg border border-gray-800 hover:-translate-y-2 transition-transform duration-300">
+      <div class="bg-[#131622]/90 backdrop-blur-sm p-4 rounded-xl shadow-lg border border-gray-800 hover:-translate-y-2 hover:border-purple-500/30 transition-all duration-300">
         <a href="https://ict.up.ac.th/newsict/detail/1606" target="_blank" rel="noopener noreferrer">
           <img src="https://ict.up.ac.th//upload/news/real/pic-202511021739264880_29429_44-7245.png" alt="Activity 4" class="w-full h-48 object-cover rounded-lg mb-4" />
           <p class="text-base text-center text-blue-400 hover:text-blue-300 transition">อบรมทักษะด้านวิทยาการข้อมูล ระดับพื้นฐาน</p>
         </a>
       </div>
 
-      <div class="bg-[#1e202c] p-4 rounded-xl shadow-lg border border-gray-800 hover:-translate-y-2 transition-transform duration-300">
+      <div class="bg-[#131622]/90 backdrop-blur-sm p-4 rounded-xl shadow-lg border border-gray-800 hover:-translate-y-2 hover:border-purple-500/30 transition-all duration-300">
         <a href="https://ict.up.ac.th/newsict/detail/835" target="_blank" rel="noopener noreferrer">
           <img src="https://ict.up.ac.th//upload/news/real/062023165212.jpg" alt="Activity 5" class="w-full h-48 object-cover rounded-lg mb-4" />
           <p class="text-base text-center text-blue-400 hover:text-blue-300 transition">ทักษะการคิดสร้างสรรค์</p>
         </a>
       </div>
 
-      <div class="bg-[#1e202c] p-4 rounded-xl shadow-lg border border-gray-800 hover:-translate-y-2 transition-transform duration-300">
+      <div class="bg-[#131622]/90 backdrop-blur-sm p-4 rounded-xl shadow-lg border border-gray-800 hover:-translate-y-2 hover:border-purple-500/30 transition-all duration-300">
         <a href="https://ict.up.ac.th/newsict/detail/786" target="_blank" rel="noopener noreferrer">
           <img src="https://ict.up.ac.th//upload/news/real/262022140428.jpg" alt="Activity 6" class="w-full h-48 object-cover rounded-lg mb-4" />
           <p class="text-base text-center text-blue-400 hover:text-blue-300 transition">ทักษะการบริหารจัดการเวลา</p>
         </a>
       </div>
 
-      <div class="bg-[#1e202c] p-4 rounded-xl shadow-lg border border-gray-800 hover:-translate-y-2 transition-transform duration-300 lg:col-start-2">
+      <div class="bg-[#131622]/90 backdrop-blur-sm p-4 rounded-xl shadow-lg border border-gray-800 hover:-translate-y-2 hover:border-purple-500/30 transition-all duration-300 lg:col-start-2">
         <a href="https://ict.up.ac.th/newsict/detail/1613" target="_blank" rel="noopener noreferrer">
           <img src="https://ict.up.ac.th//upload/news/album/pic-202507031741315212_27915_44.jpg" alt="Activity 7" class="w-full h-48 object-cover rounded-lg mb-4" />
           <p class="text-base text-center text-blue-400 hover:text-blue-300 transition">อบรมทักษะด้านวิทยาการข้อมูลระดับพื้นฐาน</p>
@@ -486,31 +456,32 @@
     </div>
   </section>
   
-  <section class="internship max-w-6xl mx-auto px-4 mb-20 reveal">
-    <div class="flex items-center justify-center gap-4 mb-4">
-      <div class="h-px bg-gray-700 flex-1 max-w-[100px]"></div>
-      <h2 class="text-3xl font-bold tracking-wider">INTERNSHIP</h2>
-      <div class="h-px bg-gray-700 flex-1 max-w-[100px]"></div>
+  <!-- ================= INTERNSHIP SECTION ================= -->
+  <section class="internship max-w-6xl mx-auto px-4 mb-24 reveal relative z-10">
+    <div class="flex items-center justify-center gap-4 mb-2">
+      <div class="h-px bg-gradient-to-r from-transparent to-gray-700 flex-1 max-w-[150px]"></div>
+      <h2 class="text-2xl md:text-3xl font-extrabold tracking-wider text-white text-center">INTERNSHIP</h2>
+      <div class="h-px bg-gradient-to-l from-transparent to-gray-700 flex-1 max-w-[150px]"></div>
     </div>
-    <p class="text-center text-lg text-purple-400 mb-8 font-semibold">System Engineer @ AskMe Solutions & Consultants Co., Ltd.</p>
+    <p class="text-center text-base md:text-lg text-purple-400 mb-8 font-semibold px-4">System Engineer @ AskMe Solutions & Consultants Co., Ltd.</p>
 
-    <div class="relative w-full max-w-5xl mx-auto overflow-hidden bg-[#1e202c] rounded-2xl border border-gray-800 shadow-xl">
+    <div class="relative w-full max-w-5xl mx-auto overflow-hidden bg-[#131622]/90 backdrop-blur-sm rounded-2xl border border-gray-800 shadow-xl">
       <div id="internshipSlider" class="flex transition-transform duration-700 ease-in-out">
         
         <div class="w-full flex-shrink-0 px-4 md:px-12 py-6">
-          <div class="bg-gray-800 rounded-xl shadow-md p-4 flex flex-col md:flex-row items-center gap-4 min-h-[280px]">
+          <div class="bg-gray-800/50 rounded-xl shadow-md p-4 flex flex-col md:flex-row items-center gap-4 min-h-[280px]">
             <img src="images/Picture1.jpg" class="w-full md:w-1/2 rounded-md shadow-md" />
             <div class="text-center md:text-left">
               <h3 class="text-lg font-semibold text-white mb-2">งานติดตั้งระบบกล้องวงจรปิด</h3>
               <p class="text-sm text-gray-400">
-                ที่ พิพิธภัณฑ์เรือนโบราณล้านนามหาวิทยาลัยเชียงใหม่ โดยหน้าที่คือตตรวจสอบความถูกต้องของการติดตั้งกล้องวงจรปิดในแต่ละจุด และทำการทดสอบการใช้งานของกล้องวงจรปิดเพื่อให้แน่ใจว่าระบบทำงานได้อย่างถูกต้องและมีประสิทธิภาพ
+                ที่ พิพิธภัณฑ์เรือนโบราณล้านนามหาวิทยาลัยเชียงใหม่ โดยหน้าที่คือตรวจสอบความถูกต้องของการติดตั้งกล้องวงจรปิดในแต่ละจุด และทำการทดสอบการใช้งานของกล้องวงจรปิดเพื่อให้แน่ใจว่าระบบทำงานได้อย่างถูกต้องและมีประสิทธิภาพ
               </p>
             </div>
           </div>
         </div>
 
         <div class="w-full flex-shrink-0 px-4 md:px-12 py-6">
-          <div class="bg-gray-800 rounded-xl shadow-md p-4 flex flex-col md:flex-row items-center gap-4 min-h-[280px]">
+          <div class="bg-gray-800/50 rounded-xl shadow-md p-4 flex flex-col md:flex-row items-center gap-4 min-h-[280px]">
             <img src="images/Picture2.jpg" class="w-full md:w-1/2 rounded-md shadow-md" />
             <div class="text-center md:text-left">
               <h3 class="text-lg font-semibold text-white mb-2">งานการตั้งค่า Aruba Access Point</h3>
@@ -522,48 +493,48 @@
         </div>
 
         <div class="w-full flex-shrink-0 px-4 md:px-12 py-6">
-          <div class="bg-gray-800 rounded-xl shadow-md p-4 flex flex-col md:flex-row items-center gap-4 min-h-[280px]">
+          <div class="bg-gray-800/50 rounded-xl shadow-md p-4 flex flex-col md:flex-row items-center gap-4 min-h-[280px]">
             <img src="images/3.png" class="w-full md:w-1/2 rounded-md shadow-md" />
             <div class="text-center md:text-left">
               <h3 class="text-lg font-semibold text-white mb-2">งานสร้าง Dashboard Grafana</h3>
               <p class="text-sm text-gray-400">
-                เพื่อมอนิเตอร์สถานะของอุปกรณ์เครือข่ายและระบบต่าง ๆ ในองค์กร โดยใช้ Grafana เป็นเครื่องมือในการสร้าง Dashboard ที่สามารถแสดงข้อมูลแบบเรียลไทม์และวิเคราะห์ข้อมูลได้อย่างมีประสิทธิภาพ   
+                เพื่อมอนิเตอร์สถานะของอุปกรณ์เครือข่ายและระบบต่าง ๆ ในองค์กร โดยใช้ Grafana เป็นเครื่องมือในการสร้าง Dashboard ที่สามารถแสดงข้อมูลแบบเรียลไทม์และวิเคราะห์ข้อมูลได้อย่างมีประสิทธิภาพ  
               </p>
             </div>
           </div>
         </div>
 
         <div class="w-full flex-shrink-0 px-4 md:px-12 py-6">
-          <div class="bg-gray-800 rounded-xl shadow-md p-4 flex flex-col md:flex-row items-center gap-4 min-h-[280px]">
+          <div class="bg-gray-800/50 rounded-xl shadow-md p-4 flex flex-col md:flex-row items-center gap-4 min-h-[280px]">
             <img src="images/4.jpg" class="w-full md:w-1/2 rounded-md shadow-md" />
             <div class="text-center md:text-left">
               <h3 class="text-lg font-semibold text-white mb-2">งานทดสอบการใช้งาน Mini PC</h3>
               <p class="text-sm text-gray-400">
-                ASUS NUC Essential 14 โดยทำการทดสอบการใช้งานในด้านต่าง ๆ เช่น การประมวลผล การเชื่อมต่อเครือข่าย และการใช้งานทั่วไป เพื่อประเมินประสิทธิภาพและความเหมาะสมในการใช้งานในสภาพแวดล้อมต่าง ๆ   
+                ASUS NUC Essential 14 โดยทำการทดสอบการใช้งานในด้านต่าง ๆ เช่น การประมวลผล การเชื่อมต่อเครือข่าย และการใช้งานทั่วไป เพื่อประเมินประสิทธิภาพและความเหมาะสมในการใช้งานในสภาพแวดล้อมต่าง ๆ  
               </p>
             </div>
           </div>
         </div>
 
         <div class="w-full flex-shrink-0 px-4 md:px-12 py-6">
-          <div class="bg-gray-800 rounded-xl shadow-md p-4 flex flex-col md:flex-row items-center gap-4 min-h-[280px]">
+          <div class="bg-gray-800/50 rounded-xl shadow-md p-4 flex flex-col md:flex-row items-center gap-4 min-h-[280px]">
             <img src="images/5.png" class="w-full md:w-1/2 rounded-md shadow-md" />
             <div class="text-center md:text-left">
               <h3 class="text-lg font-semibold text-white mb-2">สร้างระบบ AI Automation n8n</h3>
               <p class="text-sm text-gray-400">
-                การสร้าง Workflow อัตโนมัติสำหรับการจัดการงานต่าง ๆ ในองค์กร เช่น การส่งอีเมลแจ้งเตือน การสร้างกิจกรรมในปฏิทิน และการเชื่อมต่อกับ API ต่าง ๆ เพื่อเพิ่มประสิทธิภาพในการทำงานและลดภาระงานที่ต้องทำด้วยมือ   
+                การสร้าง Workflow อัตโนมัติสำหรับการจัดการงานต่าง ๆ ในองค์กร เช่น การส่งอีเมลแจ้งเตือน การสร้างกิจกรรมในปฏิทิน และการเชื่อมต่อกับ API ต่าง ๆ เพื่อเพิ่มประสิทธิภาพในการทำงานและลดภาระงานที่ต้องทำด้วยมือ  
               </p>
             </div>
           </div>
         </div>
 
         <div class="w-full flex-shrink-0 px-4 md:px-12 py-6">
-          <div class="bg-gray-800 rounded-xl shadow-md p-4 flex flex-col md:flex-row items-center gap-4 min-h-[280px]">
+          <div class="bg-gray-800/50 rounded-xl shadow-md p-4 flex flex-col md:flex-row items-center gap-4 min-h-[280px]">
             <img src="images/6.png" class="w-full md:w-1/2 rounded-md shadow-md" />
             <div class="text-center md:text-left">
               <h3 class="text-lg font-semibold text-white mb-2">การอบรมเรื่อง Omada GPON FTTR Solution และ TP-Link Omada Network 6.0</h3>
               <p class="text-sm text-gray-400">
-                การอบรมเกี่ยวกับโซลูชัน Omada GPON FTTR (Fiber To The Room) ซึ่งเป็นเทคโนโลยีที่ใช้ในการเชื่อมต่ออินเทอร์เน็ตผ่านสายไฟเบอร์ออปติก และการใช้งาน TP-Link Omada Network 6.0 ซึ่งเป็นระบบจัดการเครือข่ายที่ช่วยให้สามารถควบคุมและบริหารจัดการเครือข่ายได้อย่างมีประสิทธิภาพ   
+                การอบรมเกี่ยวกับโซลูชัน Omada GPON FTTR (Fiber To The Room) ซึ่งเป็นเทคโนโลยีที่ใช้ในการเชื่อมต่ออินเทอร์เน็ตผ่านสายไฟเบอร์ออปติก และการใช้งาน TP-Link Omada Network 6.0 ซึ่งเป็นระบบจัดการเครือข่ายที่ช่วยให้สามารถควบคุมและบริหารจัดการเครือข่ายได้อย่างมีประสิทธิภาพ  
               </p>
             </div>
           </div>
@@ -571,76 +542,140 @@
 
       </div>
 
-      <button onclick="prevIntern()" class="absolute left-2 top-1/2 -translate-y-1/2 bg-gray-900/50 hover:bg-gray-900 text-white p-3 rounded-full shadow transition z-10">
-        <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <button onclick="prevIntern()" class="absolute left-2 top-1/2 -translate-y-1/2 bg-gray-955/60 hover:bg-gray-955 text-white p-3 rounded-full shadow transition z-10">
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
         </svg>
       </button>
 
-      <button onclick="nextIntern()" class="absolute right-2 top-1/2 -translate-y-1/2 bg-gray-900/50 hover:bg-gray-900 text-white p-3 rounded-full shadow transition z-10">
-        <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <button onclick="nextIntern()" class="absolute right-2 top-1/2 -translate-y-1/2 bg-gray-955/60 hover:bg-gray-955 text-white p-3 rounded-full shadow transition z-10">
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
         </svg>
       </button>
     </div>
   </section>
 
-  <footer id="footer" class="bg-[#15161e] border-t border-gray-800 text-center text-white py-10 reveal">
+  <!-- ================= FOOTER SECTION ================= -->
+  <footer id="footer" class="bg-[#0b0d13] border-t border-gray-800/70 text-center text-white py-12 reveal relative z-10">
     <div class="max-w-6xl mx-auto px-4 flex flex-col items-center space-y-4">
-      <h3 class="font-bold text-2xl text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-500 mb-2">Let's Connect</h3>
+      <h3 class="font-extrabold text-2xl text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-500 mb-2">Let's Connect</h3>
       <div class="flex flex-col md:flex-row gap-4 text-gray-400 mb-4">
-        <p class="flex items-center gap-2"><span class="text-blue-500">📧</span> supannika546@gmail.com</p>
-        <p class="hidden md:block">|</p>
-        <p class="flex items-center gap-2"><span class="text-blue-500">📱</span> 096-714-9212</p>
+        <p class="flex items-center gap-2 hover:text-white transition"><span class="text-blue-500">📧</span> supannika546@gmail.com</p>
+        <p class="hidden md:block text-gray-700">|</p>
+        <p class="flex items-center gap-2 hover:text-white transition"><span class="text-blue-500">📱</span> 096-714-9212</p>
       </div>
       
-      <button onclick="window.open('https://github.com/MissisA')" class="flex items-center gap-2 bg-gray-800 hover:bg-gray-700 border border-gray-600 text-white px-8 py-3 rounded-full transition-all duration-300 hover:scale-105 shadow-md">
-        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 16 16">
+      <button onclick="window.open('https://github.com/MissisA')" class="flex items-center gap-2 bg-[#161925] hover:bg-purple-600 border border-gray-700 text-white px-8 py-3 rounded-full transition-all duration-300 hover:scale-105 shadow-lg group">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 16 16" class="group-hover:rotate-12 transition-transform">
           <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"/>
         </svg>
         Visit My GitHub
       </button>
     </div>
-    <div class="mt-10 text-sm text-gray-600">
-      &copy; 2025 Supannika Khanenok. Built with ❤️ & Tailwind CSS.
+    <div class="mt-10 text-xs text-gray-600">
+      &copy; 2026 Supannika Khanenok. Built with ❤️, AI & Tailwind CSS.
     </div>
   </footer>
 
+  <!-- Link ไปหาไฟล์ script.js ภายนอก (ถ้าคุณแยกไฟล์ไว้) -->
   <script src="script.js"></script>
   
+  <!-- ================= JAVASCRIPT LOGIC SYSTEM ================= -->
   <script>
-    // 1. ลูกเล่น Typewriter Effect (ตัวหนังสือพิมพ์เอง)
+    // 1. ระบบพิมพ์ดีดอัตโนมัติ (Typewriter Effect)
     const textToType = "Building modern web applications faster and smarter as an AI-Augmented Full-stack Developer.";
     const typeWriterElement = document.getElementById("typewriter-text");
     let i = 0;
     
     function typeWriter() {
-      if (i < textToType.length) {
+      if (typeWriterElement && i < textToType.length) {
         typeWriterElement.innerHTML += textToType.charAt(i);
         i++;
-        setTimeout(typeWriter, 100); 
+        setTimeout(typeWriter, 60); /* ปรับให้พิมพ์ไวขึ้นเล็กน้อยกระชับเวลา */
       }
     }
-    // เริ่มทำงานเมื่อโหลดหน้าเสร็จ
-    window.onload = function() {
+    window.addEventListener("DOMContentLoaded", function() {
       setTimeout(typeWriter, 500);
-    };
+    });
 
-    // 2. ลูกเล่น Scroll Reveal (เลื่อนจอแล้วค่อยๆ ปรากฏ)
+    // 2. แอนิเมชันตอนเลื่อนหน้าจอลงมา (Scroll Reveal)
     function reveal() {
       var reveals = document.querySelectorAll(".reveal");
-      for (var i = 0; i < reveals.length; i++) {
+      for (var j = 0; j < reveals.length; j++) {
         var windowHeight = window.innerHeight;
-        var elementTop = reveals[i].getBoundingClientRect().top;
-        var elementVisible = 100; // ระยะที่ให้แสดงผล
+        var elementTop = reveals[j].getBoundingClientRect().top;
+        var elementVisible = 80;
         
         if (elementTop < windowHeight - elementVisible) {
-          reveals[i].classList.add("active");
+          reveals[j].classList.add("active");
         }
       }
     }
     window.addEventListener("scroll", reveal);
-    reveal(); 
+    window.addEventListener("DOMContentLoaded", reveal);
+
+    // 3. ระบบจัดการและควบคุม Certificate Slider
+    let currentCertIndex = 0;
+    function showCert(index) {
+      const slider = document.getElementById("certificateSlider");
+      if (!slider) return;
+      const totalCerts = slider.children.length;
+      if (index >= totalCerts) {
+        currentCertIndex = 0;
+      } else if (index < 0) {
+        currentCertIndex = totalCerts - 1;
+      } else {
+        currentCertIndex = index;
+      }
+      slider.style.transform = `translateX(-${currentCertIndex * 100}%)`;
+    }
+    function nextCert() { showCert(currentCertIndex + 1); }
+    function prevCert() { showCert(currentCertIndex - 1); }
+
+    // 4. ระบบจัดการและควบคุม Internship Slider
+    let currentInternIndex = 0;
+    function showIntern(index) {
+      const slider = document.getElementById("internshipSlider");
+      if (!slider) return;
+      const totalInterns = slider.children.length;
+      if (index >= totalInterns) {
+        currentInternIndex = 0;
+      } else if (index < 0) {
+        currentInternIndex = totalInterns - 1;
+      } else {
+        currentInternIndex = index;
+      }
+      slider.style.transform = `translateX(-${currentInternIndex * 100}%)`;
+    }
+    function nextIntern() { showIntern(currentInternIndex + 1); }
+    function prevIntern() { showIntern(currentInternIndex - 1); }
+
+    // 5. ระบบควบคุม Dynamic Sliders สำหรับ Personal Projects ต่างๆ
+    const sliderIndices = {
+      flex: 0,
+      gin: 0,
+      job: 0,
+      pos: 0,
+      sm: 0
+    };
+
+    function moveSlider(sliderId, direction) {
+      const slider = document.getElementById(`slider-${sliderId}`);
+      if (!slider) return;
+      
+      const totalSlides = slider.children.length;
+      let currentIndex = sliderIndices[sliderId] + direction;
+
+      if (currentIndex >= totalSlides) {
+        currentIndex = 0;
+      } else if (currentIndex < 0) {
+        currentIndex = totalSlides - 1;
+      }
+
+      sliderIndices[sliderId] = currentIndex;
+      slider.style.transform = `translateX(-${currentIndex * 100}%)`;
+    }
   </script>
 </body>
 </html>
